@@ -11,7 +11,7 @@ const SUPABASE_URL =
 const SUPABASE_KEY =
 "sb_publishable_8F2wYjRCveireb8x-JOt0A_HyjnkAZB";
 
-const supabase =
+const supabaseClient =
 window.supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
@@ -1357,7 +1357,7 @@ const {
 error: saveError
 }
 =
-await supabase
+await supabaseClient
 .from(
 SUPABASE_TABLE
 )
@@ -1403,7 +1403,7 @@ data,
 error:dbError
 }
 =
-await supabase
+await supabaseClient
 
 .from(
 SUPABASE_TABLE
@@ -1547,7 +1547,7 @@ data,
 error
 }
 =
-await supabase
+await supabaseClient
 .from(SUPABASE_TABLE)
 .select("id")
 .limit(1);
