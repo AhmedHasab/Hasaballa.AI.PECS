@@ -2,19 +2,280 @@
   "platform_name": "Hasaballa AI",
   "reference_version": "RTX5090",
 
-  "phases": [],
+  "phases": [
+    {
+      "id": "P1",
+      "name": "Critical Fixes And Validation First",
+      "weeks": "1"
+    },
+    {
+      "id": "P2",
+      "name": "Core AI Engine",
+      "weeks": "2-5"
+    },
+    {
+      "id": "P3",
+      "name": "Arabic Layer And Voice Pipeline",
+      "weeks": "6-8"
+    },
+    {
+      "id": "P4",
+      "name": "Multi Model Video And Identity",
+      "weeks": "9-11"
+    },
+    {
+      "id": "P5",
+      "name": "Timeline Editor And Compositing",
+      "weeks": "12-15"
+    },
+    {
+      "id": "P6",
+      "name": "Integration QA And Delivery",
+      "weeks": "16-18"
+    }
+  ],
 
-  "main_tasks": [],
+  "main_tasks": [
 
-  "developer_tasks": [],
+    {
+      "id":"T01",
+      "title":"Script Understanding And Scene Parsing",
+      "reference":"3.1",
+      "phase":"P2"
+    },
+
+    {
+      "id":"T02",
+      "title":"Image Generation",
+      "reference":"3.2",
+      "phase":"P2"
+    },
+
+    {
+      "id":"T03",
+      "title":"Video Generation Multi Model Architecture",
+      "reference":"3.3",
+      "phase":"P4"
+    },
+
+    {
+      "id":"T04",
+      "title":"Arabic Voice",
+      "reference":"3.4",
+      "phase":"P2"
+    },
+
+    {
+      "id":"T05",
+      "title":"Lip Sync",
+      "reference":"3.5",
+      "phase":"P2"
+    },
+
+    {
+      "id":"T06",
+      "title":"Timeline And Video Editor",
+      "reference":"3.6",
+      "phase":"P5"
+    },
+
+    {
+      "id":"T07",
+      "title":"Animation Quality Guard",
+      "reference":"3.7",
+      "phase":"P4"
+    },
+
+    {
+      "id":"T08",
+      "title":"Offline Sound Library",
+      "reference":"3.8",
+      "phase":"P3"
+    },
+
+    {
+      "id":"T09",
+      "title":"Arabic Singing Voice",
+      "reference":"3.9",
+      "phase":"P6"
+    },
+
+    {
+      "id":"T10",
+      "title":"Depth Aware Parallax",
+      "reference":"3.10",
+      "phase":"P4"
+    }
+  ],
+
+  "developer_tasks": [
+
+    {
+      "id":"DEV-001",
+      "title":"Timeline Editor",
+      "phase":"P5",
+      "week":"12-15"
+    },
+
+    {
+      "id":"DEV-002",
+      "title":"CosyVoice 2",
+      "phase":"P2",
+      "week":"2"
+    },
+
+    {
+      "id":"DEV-003",
+      "title":"Qwen2.5-72B",
+      "phase":"P2",
+      "week":"3"
+    },
+
+    {
+      "id":"DEV-004",
+      "title":"Arabic wav2vec2 Encoder",
+      "phase":"P2",
+      "week":"4"
+    },
+
+    {
+      "id":"DEV-005",
+      "title":"WAN 2.2",
+      "phase":"P4",
+      "week":"9"
+    },
+
+    {
+      "id":"DEV-006",
+      "title":"HunyuanVideo",
+      "phase":"P4",
+      "week":"9"
+    },
+
+    {
+      "id":"DEV-007",
+      "title":"SkyReels",
+      "phase":"P4",
+      "week":"9"
+    },
+
+    {
+      "id":"DEV-008",
+      "title":"PuLID FLUX",
+      "phase":"P4",
+      "week":"10"
+    },
+
+    {
+      "id":"DEV-009",
+      "title":"SDXL + InstantID",
+      "phase":"P4",
+      "week":"10"
+    },
+
+    {
+      "id":"DEV-010",
+      "title":"Smart Edit Layer",
+      "phase":"P5",
+      "week":"14"
+    }
+  ],
 
   "sub_tasks": [],
 
   "acceptance_criteria": [],
 
-  "milestones": [],
+  "milestones": [
+
+    {
+      "id":"M1",
+      "week":"1",
+      "title":"Security Clean Windows Ready Codebase"
+    },
+
+    {
+      "id":"M2",
+      "week":"5",
+      "title":"Core AI Engine Complete"
+    },
+
+    {
+      "id":"M3",
+      "week":"8",
+      "title":"Arabic Voice Pipeline Complete"
+    },
+
+    {
+      "id":"M4",
+      "week":"11",
+      "title":"Video Identity Pipeline Complete"
+    },
+
+    {
+      "id":"M5",
+      "week":"15",
+      "title":"Timeline Editor Complete"
+    },
+
+    {
+      "id":"DELIVERY",
+      "week":"18",
+      "title":"Final Delivery"
+    }
+  ],
 
   "weekly_reports": [],
 
-  "mapping": []
+  "mapping": [
+
+    {
+      "developer_task":"DEV-001",
+      "reference_task":"T06"
+    },
+
+    {
+      "developer_task":"DEV-002",
+      "reference_task":"T04"
+    },
+
+    {
+      "developer_task":"DEV-003",
+      "reference_task":"T01"
+    },
+
+    {
+      "developer_task":"DEV-004",
+      "reference_task":"T05"
+    },
+
+    {
+      "developer_task":"DEV-005",
+      "reference_task":"T03"
+    },
+
+    {
+      "developer_task":"DEV-006",
+      "reference_task":"T03"
+    },
+
+    {
+      "developer_task":"DEV-007",
+      "reference_task":"T03"
+    },
+
+    {
+      "developer_task":"DEV-008",
+      "reference_task":"T02"
+    },
+
+    {
+      "developer_task":"DEV-009",
+      "reference_task":"T02"
+    },
+
+    {
+      "developer_task":"DEV-010",
+      "reference_task":"T06"
+    }
+  ]
 }
