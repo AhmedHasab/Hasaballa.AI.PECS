@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "name":"Charvina",
+    "role":"Frontend + Timeline Editor"
+  },
+  {
+    "name":"Dhruvi",
+    "role":"Voice Systems"
+  },
+  {
+    "name":"Rini",
+    "role":"AI Lead"
+  },
+  {
+    "name":"Parth",
+    "role":"AI Lead"
+  } 
+]
