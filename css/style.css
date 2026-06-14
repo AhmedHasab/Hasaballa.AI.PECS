@@ -384,4 +384,35 @@ grid-template-columns:1fr;
 
 }
 
+.table-wrapper{
+overflow-x:auto;
+width:100%;
+}
+
+#tasksTable{
+min-width:1800px;
+border-collapse:collapse;
+}
+
+#tasksTable th,
+#tasksTable td{
+padding:10px;
+font-size:14px;
+vertical-align:top;
+white-space:normal;
+}
+
+.notes-box{
+min-width:250px;
+min-height:100px;
+}
+
+.progress{
+min-width:120px;
+}
+
+.developer-select{
+min-width:150px;
+}
+
 </style>
