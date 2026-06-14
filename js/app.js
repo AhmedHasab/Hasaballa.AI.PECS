@@ -803,7 +803,6 @@ progress
 
 <td>
 
-<td>
    ${renderDeveloperTasks(master.id)}
 </td>
 
