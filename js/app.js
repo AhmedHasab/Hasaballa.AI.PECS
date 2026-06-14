@@ -1470,8 +1470,6 @@ async function forceSave(){
 
 saveLocal();
 
-await saveToSupabase();
-
 alert(
 "Saved Successfully"
 );
@@ -1484,7 +1482,7 @@ alert(
 
 async function forceLoad(){
 
-/*wait loadFromSupabase();*/
+/* wait loadFromSupabase(); */
 
 refreshAll();
 
