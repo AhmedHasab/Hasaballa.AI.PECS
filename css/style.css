@@ -214,11 +214,15 @@ font-size:13px;
 
 }
 
-tr.completed{
+tr.completed td{
 
-background:var(--completed);
+background:#e5e7eb !important;
 
-border:3px solid var(--completed-border);
+border-top:4px solid #ffd600 !important;
+
+border-bottom:4px solid #ffd600 !important;
+
+font-weight:700;
 
 }
 
