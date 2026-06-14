@@ -738,6 +738,10 @@ ${master.reference_task}
 </td>
 
 <td>
+   ${renderDeveloperTasks(master.id)}
+</td>
+
+<td>
 
 ${master.id}
 
@@ -823,6 +827,32 @@ master.id
 });
 
 attachTaskEvents();
+
+}
+
+function renderDeveloperTasks(masterId){
+
+   const items = [];
+
+   getSubtasks(masterId).forEach(sub => {
+
+      Object.entries(developerTasks).forEach(([devTask, links]) => {
+
+         if(links.includes(sub.title)){
+
+            items.push(devTask);
+
+         }
+
+      });
+
+   });
+
+   return items.map(task => `
+      <div class="developer-task">
+         ${task}
+      </div>
+   `).join("");
 
 }
 
