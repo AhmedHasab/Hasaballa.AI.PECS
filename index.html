@@ -1,206 +1,753 @@
-<!DOCTYPE html>
+/* =====================================================
+   HASABALLA AI PECS
+   CLEAN APP.JS
+   PART 1 / 2
+===================================================== */
 
-<html lang="ar" dir="rtl">
+const SUPABASE_URL =
+"https://oivtndqstklnsxwherpp.supabase.co";
 
-<head>
+const SUPABASE_KEY =
+"sb_publishable_8F2wYjRCveireb8x-JOt0A_HyjnkAZB";
 
-<meta charset="UTF-8">
+const sb =
+window.supabase.createClient(
+SUPABASE_URL,
+SUPABASE_KEY
+);
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+const DATA = {
+tasks: [],
+subtasks: [],
+reports: [],
+phases: [],
+milestones: [],
+masterTasks: [],
+mappings: [],
+developers: []
+};
 
-<title>
-Hasaballa AI PECS
-</title>
+const FILTERS = {
+search: "",
+phase: "",
+milestone: "",
+developer: "",
+taskType: ""
+};
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+function el(id){
+return document.getElementById(id);
+}
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+async function loadJSON(path){
 
-<link
-href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap"
-rel="stylesheet">
+const response =
+await fetch(path);
 
-<link
-rel="stylesheet"
-href="./css/style.css">
+if(!response.ok){
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+throw new Error(
+`Failed loading ${path}`
+);
 
-</head>
+}
 
-<body>
+return await response.json();
 
-<div class="container">
+}
 
-<!-- HEADER -->
+async function loadAllData(){
 
-<div class="header">
+const results =
+await Promise.all([
 
-<h1>
+loadJSON("./data/tasks.json"),
 
-Hasaballa AI PECS
+loadJSON("./data/subtasks.json"),
 
-</h1>
+loadJSON("./data/reports.json"),
 
-</div>
+loadJSON("./data/phases.json"),
 
-<!-- DASHBOARD -->
+loadJSON("./data/milestones.json"),
 
-<div class="cards">
+loadJSON("./data/master_tasks.json"),
 
-<div class="card">
-<h3>إجمالي المهام</h3>
-<div id="totalTasks" class="value">0</div>
-</div>
+loadJSON("./data/mappings.json"),
 
-<div class="card">
-<h3>تم تنفيذها</h3>
-<div id="completedTasks" class="value">0</div>
-</div>
+loadJSON("./data/developers.json")
 
-<div class="card">
-<h3>قيد التنفيذ</h3>
-<div id="inProgressTasks" class="value">0</div>
-</div>
+]);
 
-<div class="card">
-<h3>المتبقي</h3>
-<div id="remainingTasks" class="value">0</div>
-</div>
+DATA.tasks = results[0];
+DATA.subtasks = results[1];
+DATA.reports = results[2];
+DATA.phases = results[3];
+DATA.milestones = results[4];
+DATA.masterTasks = results[5];
+DATA.mappings = results[6];
+DATA.developers = results[7];
 
-</div>
+}
 
-<!-- FILTERS -->
+function updateDashboard(){
 
-<div class="section">
+const total =
+DATA.masterTasks.length;
 
-<div class="section-title">
+const completed =
+DATA.tasks.filter(
+x=>x.status==="Completed"
+).length;
 
-Project Filters
+const inProgress =
+DATA.tasks.filter(
+x=>x.status==="In Progress"
+).length;
 
-</div>
+const remaining =
+Math.max(
+0,
+total-completed
+);
 
-<div class="filters">
+el("totalTasks").textContent =
+total;
 
-<input
-type="text"
-id="searchBox"
-placeholder="بحث عن مهمة...">
+el("completedTasks").textContent =
+completed;
 
-<select id="phaseFilter">
-<option value="">
-كل المراحل
+el("inProgressTasks").textContent =
+inProgress;
+
+el("remainingTasks").textContent =
+remaining;
+
+}
+
+function populateFilters(){
+
+const phaseFilter =
+el("phaseFilter");
+
+const developerFilter =
+el("developerFilter");
+
+const taskTypeFilter =
+el("taskTypeFilter");
+
+const milestoneFilter =
+el("milestoneFilter");
+
+DATA.phases.forEach(p=>{
+
+phaseFilter.innerHTML +=
+`
+<option value="${p.id}">
+${p.id} - ${p.name}
 </option>
-</select>
+`;
 
-<select id="milestoneFilter">
-<option value="">
-كل الـ Milestones
-</option>
-</select>
+});
 
-<select id="developerFilter">
-<option value="">
-كل المطورين
-</option>
-</select>
+DATA.milestones.forEach(m=>{
 
-<select id="taskTypeFilter">
-<option value="">
-كل أنواع المهام
+milestoneFilter.innerHTML +=
+`
+<option value="${m.id}">
+${m.id}
 </option>
-</select>
+`;
+
+});
+
+DATA.developers.forEach(dev=>{
+
+developerFilter.innerHTML +=
+`
+<option value="${dev.name}">
+${dev.name}
+</option>
+`;
+
+});
+
+const taskTypes =
+[
+...new Set(
+DATA.subtasks.map(
+s=>s.task_type
+)
+)
+];
+
+taskTypes.sort();
+
+taskTypes.forEach(type=>{
+
+taskTypeFilter.innerHTML +=
+`
+<option value="${type}">
+${type}
+</option>
+`;
+
+});
+
+}
+
+function getSubtasks(taskId){
+
+return DATA.subtasks.filter(
+s=>s.parent_task===taskId
+);
+
+}
+
+function getMilestoneFromPhase(
+phaseId
+){
+
+const phase =
+DATA.phases.find(
+p=>p.id===phaseId
+);
+
+if(!phase)
+return "-";
+
+return phase.milestone;
+
+}
+
+function buildSubtasksHTML(
+taskId
+){
+
+const subtasks =
+getSubtasks(taskId);
+
+if(!subtasks.length){
+
+return
+"<span>—</span>";
+
+}
+
+return subtasks.map(st=>`
+
+<div class="subtask">
+
+<b>${st.id}</b>
+
+<br>
+
+${st.title}
+
+<br>
+
+<small>
+
+${st.task_type}
+
+</small>
 
 </div>
 
-</div>
+`).join("");
 
-<!-- TASKS -->
+}
+/* =====================================================
+   HASABALLA AI PECS
+   CLEAN APP.JS
+   PART 2 / 2
+===================================================== */
 
-<div class="section">
+function renderTasks(){
 
-<div class="section-title">
+const tbody =
+el("tasksBody");
 
-Developer Tasks ↔ Reference Tasks ↔ Master Tasks
+if(!tbody)
+return;
 
-</div>
+tbody.innerHTML = "";
 
-<div class="table-wrapper">
+DATA.masterTasks.forEach(task=>{
 
-<table id="tasksTable">
+const milestone =
+getMilestoneFromPhase(
+task.phase
+);
 
-<thead>
+const subtasksHTML =
+buildSubtasksHTML(
+task.id
+);
+
+const phaseMatch =
+!FILTERS.phase ||
+task.phase.includes(
+FILTERS.phase
+);
+
+const milestoneMatch =
+!FILTERS.milestone ||
+milestone ===
+FILTERS.milestone;
+
+const taskTypeMatch =
+!FILTERS.taskType ||
+task.task_type ===
+FILTERS.taskType;
+
+const searchMatch =
+!FILTERS.search ||
+task.title
+.toLowerCase()
+.includes(
+FILTERS.search
+.toLowerCase()
+);
+
+if(
+!phaseMatch ||
+!milestoneMatch ||
+!taskTypeMatch ||
+!searchMatch
+){
+
+return;
+
+}
+
+tbody.innerHTML += `
 
 <tr>
 
-<th>✓</th>
-<th>المهمة</th>
-<th>نوع المهمة</th>
-<th>Reference</th>
-<th>Master</th>
-<th>Phase</th>
-<th>Milestone</th>
-<th>Week</th>
-<th>Developer</th>
-<th>Status</th>
-<th>Progress</th>
-<th>Subtasks</th>
-<th>Notes</th>
+<td>
+☐
+</td>
+
+<td>
+
+<b>
+
+${task.title}
+
+</b>
+
+<br>
+
+<small>
+
+${task.id}
+
+</small>
+
+</td>
+
+<td>
+
+${task.task_type}
+
+</td>
+
+<td>
+
+${task.reference_task}
+
+</td>
+
+<td>
+
+${task.id}
+
+</td>
+
+<td>
+
+${task.phase}
+
+</td>
+
+<td>
+
+${milestone}
+
+</td>
+
+<td>
+
+${task.week_start}
+-
+${task.week_end}
+
+</td>
+
+<td>
+
+-
+
+</td>
+
+<td>
+
+Pending
+
+</td>
+
+<td>
+
+0%
+
+</td>
+
+<td>
+
+${subtasksHTML}
+
+</td>
+
+<td>
+
+-
+
+</td>
 
 </tr>
 
-</thead>
+`;
 
-<tbody id="tasksBody">
+});
 
-</tbody>
+}
 
-</table>
+function renderWeeklyReports(){
+
+const container =
+el("weeklyReports");
+
+if(!container)
+return;
+
+container.innerHTML = "";
+
+DATA.reports.forEach(report=>{
+
+container.innerHTML += `
+
+<div class="report-card">
+
+<h3>
+
+${report.week}
+
+</h3>
+
+<p>
+
+${report.period}
+
+</p>
+
+<p>
+
+<b>Status:</b>
+
+${report.status}
+
+</p>
+
+<p>
+
+<b>Manager:</b>
+
+${report.project_manager}
+
+</p>
+
+<p>
+
+<b>Developers:</b>
+
+${report.developers.join(
+", "
+)}
+
+</p>
+
+<hr>
+
+<h4>
+
+Completed
+
+</h4>
+
+<ul>
+
+${report.completed_tasks
+.map(item=>
+`<li>${item}</li>`
+)
+.join("")
+}
+
+</ul>
+
+<h4>
+
+In Progress
+
+</h4>
+
+<ul>
+
+${report.in_progress
+.map(item=>
+`<li>${item}</li>`
+)
+.join("")
+}
+
+</ul>
 
 </div>
 
-</div>
+`;
 
-<!-- WEEKLY REPORTS -->
+});
 
-<div class="section">
+}
 
-<div class="section-title">
+function renderDailyReports(){
 
-Weekly Reports
+const container =
+el("dailyReports");
 
-</div>
+if(!container)
+return;
 
-<div id="weeklyReports">
+container.innerHTML =
 
-</div>
+`
 
-</div>
+<div class="report-card">
 
-<!-- DAILY REPORTS -->
-
-<div class="section">
-
-<div class="section-title">
+<h3>
 
 Daily Reports
 
+</h3>
+
+<p>
+
+Ready For Future Updates
+
+</p>
+
 </div>
 
-<div id="dailyReports">
+`;
 
-</div>
+}
 
-</div>
+function bindFilters(){
 
-</div>
+el("searchBox")
+.addEventListener(
+"input",
+e=>{
 
-<script src="./js/app.js"></script>
+FILTERS.search =
+e.target.value;
 
-</body>
+renderTasks();
 
-</html>
+}
+);
+
+el("phaseFilter")
+.addEventListener(
+"change",
+e=>{
+
+FILTERS.phase =
+e.target.value;
+
+renderTasks();
+
+}
+);
+
+el("milestoneFilter")
+.addEventListener(
+"change",
+e=>{
+
+FILTERS.milestone =
+e.target.value;
+
+renderTasks();
+
+}
+);
+
+el("developerFilter")
+.addEventListener(
+"change",
+e=>{
+
+FILTERS.developer =
+e.target.value;
+
+renderTasks();
+
+}
+);
+
+el("taskTypeFilter")
+.addEventListener(
+"change",
+e=>{
+
+FILTERS.taskType =
+e.target.value;
+
+renderTasks();
+
+}
+);
+
+}
+
+async function saveState(){
+
+try{
+
+await sb
+.from(
+"project_state"
+)
+.upsert({
+
+id:1,
+
+filters:
+JSON.stringify(
+FILTERS
+)
+
+});
+
+}
+catch(error){
+
+console.error(
+error
+);
+
+}
+
+}
+
+async function loadState(){
+
+try{
+
+const {
+data
+}
+=
+await sb
+.from(
+"project_state"
+)
+.select("*")
+.eq(
+"id",
+1
+)
+.single();
+
+if(
+data &&
+data.filters
+){
+
+Object.assign(
+
+FILTERS,
+
+JSON.parse(
+data.filters
+)
+
+);
+
+}
+
+}
+catch(error){
+
+console.log(
+"No Saved State"
+);
+
+}
+
+}
+
+async function initialize(){
+
+try{
+
+await loadAllData();
+
+await loadState();
+
+updateDashboard();
+
+populateFilters();
+
+renderTasks();
+
+renderWeeklyReports();
+
+renderDailyReports();
+
+bindFilters();
+
+setInterval(
+saveState,
+30000
+);
+
+console.log(
+"PECS Ready"
+);
+
+}
+catch(error){
+
+console.error(
+error
+);
+
+}
+
+}
+
+document
+.addEventListener(
+
+"DOMContentLoaded",
+
+initialize
+
+);
+
+/* =====================================================
+   END
+===================================================== */
