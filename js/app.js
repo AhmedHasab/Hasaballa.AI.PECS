@@ -1,9 +1,4 @@
-/* =====================================================
-   HASABALLA AI PECS
-   APP.JS
-   PART 1 / 3
-   CONFIG + LOAD DATA + DASHBOARD
-===================================================== */
+
 
 const SUPABASE_URL =
 "https://oivtndqstklnsxwherpp.supabase.co";
