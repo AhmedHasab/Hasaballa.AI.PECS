@@ -1,1 +1,194 @@
 
+[
+  {
+    "id": "P1",
+    "name": "Critical Fixes And Validation First",
+    "start_week": 1,
+    "end_week": 1,
+    "weeks": "1",
+    "milestone": "M1",
+    "status": "active",
+    "description": "Security cleanup, validation, Arabic readiness, configuration fixes"
+  },
+
+  {
+    "id": "P2",
+    "name": "Core AI Engine",
+    "start_week": 2,
+    "end_week": 5,
+    "weeks": "2-5",
+    "milestone": "M2",
+    "status": "active",
+    "description": "Qwen2.5, CosyVoice2, Arabic wav2vec2, Lip Sync, Real-ESRGAN"
+  },
+
+  {
+    "id": "P3",
+    "name": "Arabic Layer And Voice Pipeline",
+    "start_week": 6,
+    "end_week": 8,
+    "weeks": "6-8",
+    "milestone": "M3",
+    "status": "active",
+    "description": "RTL validation, dialect engine, Demucs, Whisper STT, Offline Audio Library"
+  },
+
+  {
+    "id": "P4",
+    "name": "Multi Model Video And Identity",
+    "start_week": 9,
+    "end_week": 11,
+    "weeks": "9-11",
+    "milestone": "M4",
+    "status": "active",
+    "description": "WAN 2.2, HunyuanVideo, SkyReels, PuLID FLUX, SDXL, LoRA"
+  },
+
+  {
+    "id": "P5",
+    "name": "Timeline Editor And Compositing",
+    "start_week": 12,
+    "end_week": 15,
+    "weeks": "12-15",
+    "milestone": "M5",
+    "status": "active",
+    "description": "Timeline Editor, Smart Edit Layer, Chrome Key, QA"
+  },
+
+  {
+    "id": "P6",
+    "name": "Integration QA And Delivery",
+    "start_week": 16,
+    "end_week": 18,
+    "weeks": "16-18",
+    "milestone": "DELIVERY",
+    "status": "active",
+    "description": "Integration, Benchmarking, Final QA, Packaging, Delivery"
+  },
+
+  {
+    "id": "W1",
+    "phase": "P1",
+    "week": 1,
+    "title": "Security Cleanup"
+  },
+
+  {
+    "id": "W2",
+    "phase": "P2",
+    "week": 2,
+    "title": "CosyVoice2 Integration"
+  },
+
+  {
+    "id": "W3",
+    "phase": "P2",
+    "week": 3,
+    "title": "Qwen2.5-72B Integration"
+  },
+
+  {
+    "id": "W4",
+    "phase": "P2",
+    "week": 4,
+    "title": "Arabic wav2vec2 Encoder"
+  },
+
+  {
+    "id": "W5",
+    "phase": "P2",
+    "week": 5,
+    "title": "Real-ESRGAN + GPU Optimization"
+  },
+
+  {
+    "id": "W6",
+    "phase": "P3",
+    "week": 6,
+    "title": "RTL Validation"
+  },
+
+  {
+    "id": "W7",
+    "phase": "P3",
+    "week": 7,
+    "title": "Dialect Engine + Demucs"
+  },
+
+  {
+    "id": "W8",
+    "phase": "P3",
+    "week": 8,
+    "title": "Whisper + Offline Audio Library"
+  },
+
+  {
+    "id": "W9",
+    "phase": "P4",
+    "week": 9,
+    "title": "WAN 2.2 + HunyuanVideo + SkyReels"
+  },
+
+  {
+    "id": "W10",
+    "phase": "P4",
+    "week": 10,
+    "title": "PuLID FLUX + SDXL + InstantID"
+  },
+
+  {
+    "id": "W11",
+    "phase": "P4",
+    "week": 11,
+    "title": "LoRA + Identity Validation"
+  },
+
+  {
+    "id": "W12",
+    "phase": "P5",
+    "week": 12,
+    "title": "Timeline Foundation"
+  },
+
+  {
+    "id": "W13",
+    "phase": "P5",
+    "week": 13,
+    "title": "Chrome Key Compositing"
+  },
+
+  {
+    "id": "W14",
+    "phase": "P5",
+    "week": 14,
+    "title": "Smart Edit Layer"
+  },
+
+  {
+    "id": "W15",
+    "phase": "P5",
+    "week": 15,
+    "title": "Timeline QA"
+  },
+
+  {
+    "id": "W16",
+    "phase": "P6",
+    "week": 16,
+    "title": "Integration"
+  },
+
+  {
+    "id": "W17",
+    "phase": "P6",
+    "week": 17,
+    "title": "Benchmarking And Packaging"
+  },
+
+  {
+    "id": "W18",
+    "phase": "P6",
+    "week": 18,
+    "title": "Final Delivery"
+  }
+]
