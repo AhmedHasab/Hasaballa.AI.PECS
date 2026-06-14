@@ -1,6 +1,12 @@
 {
-  "project": "Hasaballa AI PECS",
-  "version": "1.0",
-  "totalPhases": 6,
-  "phases": []
+  "platform_name": "Hasaballa AI",
+  "reference_version": "RTX5090",
+  "total_main_tasks": 18,
+  "phases": [],
+  "main_tasks": [],
+  "sub_tasks": [],
+  "developer_tasks": [],
+  "milestones": [],
+  "weekly_reports": [],
+  "mapping": []
 }
