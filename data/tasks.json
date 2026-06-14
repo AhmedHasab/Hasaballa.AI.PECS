@@ -1,29 +1,81 @@
 [
-  {
-    "id":"DEV-001",
-    "title":"Timeline Editor",
-    "phase":"Phase 5",
-    "week":"12-15",
-    "developer":"Charvina",
-    "status":"In Progress",
-    "progress":40
-  },
-  {
-    "id":"DEV-002",
-    "title":"CosyVoice 2",
-    "phase":"Phase 2",
-    "week":"2",
-    "developer":"Dhruvi",
-    "status":"Completed",
-    "progress":100
-  },
-  {
-    "id":"DEV-003",
-    "title":"Qwen2.5-72B",
-    "phase":"Phase 2",
-    "week":"3",
-    "developer":"",
-    "status":"Pending",
-    "progress":0
-  }
+{
+"id":"DEV-001",
+"title":"Timeline Editor",
+"phase":"Phase 5",
+"week":"12-15",
+"developer":"Charvina",
+"status":"In Progress",
+"progress":75
+},
+
+{
+"id":"DEV-002",
+"title":"CosyVoice 2",
+"phase":"Phase 2",
+"week":"2-6",
+"developer":"Dhruvi",
+"status":"In Progress",
+"progress":60
+},
+
+{
+"id":"DEV-003",
+"title":"Qwen2.5-72B",
+"phase":"Phase 2",
+"week":"3",
+"developer":"",
+"status":"Pending",
+"progress":0
+},
+
+{
+"id":"DEV-WHISPER",
+"title":"Whisper Validation",
+"phase":"Phase 2",
+"week":"4-6",
+"developer":"Charvina",
+"status":"In Progress",
+"progress":85
+},
+
+{
+"id":"DEV-RTL",
+"title":"RTL UI Audit",
+"phase":"Phase 1",
+"week":"1",
+"developer":"Parth",
+"status":"Completed",
+"progress":100
+},
+
+{
+"id":"DEV-CONFIG",
+"title":"Critical Config Fixes",
+"phase":"Phase 1",
+"week":"1",
+"developer":"Parth",
+"status":"Completed",
+"progress":100
+},
+
+{
+"id":"DEV-TTS-002",
+"title":"Habibi OmniVoice",
+"phase":"Phase 3",
+"week":"6-8",
+"developer":"Parth",
+"status":"In Progress",
+"progress":60
+},
+
+{
+"id":"DEV-DATA",
+"title":"Data Verification",
+"phase":"Phase 1",
+"week":"1-3",
+"developer":"Dhruvi",
+"status":"Completed",
+"progress":100
+}
 ]
