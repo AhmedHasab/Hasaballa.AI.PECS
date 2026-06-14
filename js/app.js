@@ -737,9 +737,6 @@ ${master.reference_task}
 
 </td>
 
-<td>
-   ${renderDeveloperTasks(master.id)}
-</td>
 
 <td>
 
@@ -805,6 +802,10 @@ progress
 </td>
 
 <td>
+
+<td>
+   ${renderDeveloperTasks(master.id)}
+</td>
 
 ${renderSubtasks(
 master.id
