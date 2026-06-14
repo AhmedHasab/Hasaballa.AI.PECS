@@ -1,91 +1,20 @@
 {
-  "platform_name":"Hasaballa AI",
-  "reference_version":"RTX5090",
+  "platform_name": "Hasaballa AI",
+  "reference_version": "RTX5090",
 
-  "phases":[
-    {
-      "id":"P1",
-      "name":"Critical Fixes And Validation First",
-      "weeks":"1"
-    },
-    {
-      "id":"P2",
-      "name":"Core AI Engine",
-      "weeks":"2-5"
-    },
-    {
-      "id":"P3",
-      "name":"Arabic Layer And Voice Pipeline",
-      "weeks":"6-8"
-    },
-    {
-      "id":"P4",
-      "name":"Multi Model Video And Identity",
-      "weeks":"9-11"
-    },
-    {
-      "id":"P5",
-      "name":"Timeline Editor And Compositing",
-      "weeks":"12-15"
-    },
-    {
-      "id":"P6",
-      "name":"Integration QA And Delivery",
-      "weeks":"16-18"
-    }
-  ],
+  "phases": [],
 
-  "main_tasks":[
+  "main_tasks": [],
 
-    {
-      "id":"DEV-001",
-      "name":"Timeline Editor"
-    },
+  "developer_tasks": [],
 
-    {
-      "id":"DEV-002",
-      "name":"CosyVoice 2"
-    },
+  "sub_tasks": [],
 
-    {
-      "id":"DEV-003",
-      "name":"Qwen2.5-72B"
-    },
+  "acceptance_criteria": [],
 
-    {
-      "id":"DEV-004",
-      "name":"WAN 2.2"
-    },
+  "milestones": [],
 
-    {
-      "id":"DEV-005",
-      "name":"HunyuanVideo"
-    },
+  "weekly_reports": [],
 
-    {
-      "id":"DEV-006",
-      "name":"SkyReels"
-    },
-
-    {
-      "id":"DEV-007",
-      "name":"Arabic Lip Sync"
-    },
-
-    {
-      "id":"DEV-008",
-      "name":"Arabic Audio Library"
-    },
-
-    {
-      "id":"DEV-009",
-      "name":"Character Consistency"
-    },
-
-    {
-      "id":"DEV-010",
-      "name":"Smart Edit Layer"
-    }
-
-  ]
+  "mapping": []
 }
