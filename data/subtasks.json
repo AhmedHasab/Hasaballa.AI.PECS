@@ -1,205 +1,2327 @@
 [
-{
-"parent":"DEV-001",
-"title":"Timeline Canvas",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Timeline Ruler",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Multi Track Layout",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Clip Management",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Drag And Drop",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Clip Trimming",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Clip Splitting",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Playhead Navigation",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Beat Markers",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Track Management",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Audio Waveform",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Video Thumbnail Extraction",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Runtime Zoom Controls",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Ken Burns Support",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Placeholder Clips",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Boundary Snapping",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Autosave And Recovery",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Undo Redo",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Timeline Transitions",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-001",
-"title":"Video Preview",
-"status":"In Progress",
-"progress":30
-},
-{
-"parent":"DEV-001",
-"title":"Chroma Key",
-"status":"In Progress",
-"progress":25
-},
+  {
+    "id":"ST-4-01",
+    "parent_task":"T01",
+    "title":"Display Window",
+    "reference":"4-A",
+    "task_type":"Script Understanding",
+    "phase":"P2",
+    "status":"Not Started"
+  },
 
-{
-"parent":"DEV-002",
-"title":"CosyVoice Installation",
-"status":"In Progress",
-"progress":60
-},
-{
-"parent":"DEV-002",
-"title":"Arabic Voice Validation",
-"status":"In Progress",
-"progress":60
-},
-{
-"parent":"DEV-002",
-"title":"Voice Cloning Validation",
-"status":"Pending",
-"progress":0
-},
+  {
+    "id":"ST-4-02",
+    "parent_task":"T01",
+    "title":"Send Button",
+    "reference":"4-B",
+    "task_type":"Script Understanding",
+    "phase":"P2",
+    "status":"Not Started"
+  },
 
-{
-"parent":"DEV-003",
-"title":"Qwen Download",
-"status":"Pending",
-"progress":0
-},
-{
-"parent":"DEV-003",
-"title":"GGUF Setup",
-"status":"Pending",
-"progress":0
-},
-{
-"parent":"DEV-003",
-"title":"Arabic Prompt Engine",
-"status":"Pending",
-"progress":0
-},
+  {
+    "id":"ST-4-03",
+    "parent_task":"T01",
+    "title":"Microphone Button",
+    "reference":"4-C",
+    "task_type":"Voice",
+    "phase":"P2",
+    "status":"Not Started"
+  },
 
-{
-"parent":"DEV-WHISPER",
-"title":"Egyptian Dialect Validation",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-WHISPER",
-"title":"Moroccan Dialect Validation",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-WHISPER",
-"title":"Gulf Dialect Validation",
-"status":"Completed",
-"progress":100
-},
-{
-"parent":"DEV-WHISPER",
-"title":"Remaining Dialect Validation",
-"status":"In Progress",
-"progress":70
-},
+  {
+    "id":"ST-4-04",
+    "parent_task":"T01",
+    "title":"Insert Reference Images",
+    "reference":"4-D",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
 
-{
-"parent":"DEV-RTL",
-"title":"RTL UI Audit",
-"status":"Completed",
-"progress":100
-},
+  {
+    "id":"ST-4-05",
+    "parent_task":"T01",
+    "title":"Reference Voice System",
+    "reference":"4-E",
+    "task_type":"Voice",
+    "phase":"P2",
+    "status":"Not Started"
+  },
 
+  {
+    "id":"ST-4-06",
+    "parent_task":"T01",
+    "title":"Character Pack Management",
+    "reference":"4-E",
+    "task_type":"Infrastructure",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-07",
+    "parent_task":"T01",
+    "title":"Scene Parsing Engine",
+    "reference":"4-F",
+    "task_type":"Script Understanding",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-08",
+    "parent_task":"T01",
+    "title":"Speaker Detection Engine",
+    "reference":"4-F",
+    "task_type":"Script Understanding",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-09",
+    "parent_task":"T01",
+    "title":"Arabic Dialect Detection",
+    "reference":"4-F",
+    "task_type":"Voice",
+    "phase":"P3",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-10",
+    "parent_task":"T01",
+    "title":"Narration Mode Detection",
+    "reference":"4-F",
+    "task_type":"Smart Director",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-11",
+    "parent_task":"T01",
+    "title":"Dialogue Mode Detection",
+    "reference":"4-F",
+    "task_type":"Smart Director",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-12",
+    "parent_task":"T01",
+    "title":"Mixed Mode Detection",
+    "reference":"4-F",
+    "task_type":"Smart Director",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-13",
+    "parent_task":"T01",
+    "title":"Automatic Generation Button",
+    "reference":"4-I-1",
+    "task_type":"Smart Director",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-14",
+    "parent_task":"T01",
+    "title":"Manual Generation Button",
+    "reference":"4-I-2",
+    "task_type":"Smart Director",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-15",
+    "parent_task":"T01",
+    "title":"Task Timeline Tracker",
+    "reference":"4-I-2-1",
+    "task_type":"Timeline Editor",
+    "phase":"P5",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-16",
+    "parent_task":"T01",
+    "title":"Saved Projects Panel",
+    "reference":"4-J",
+    "task_type":"Infrastructure",
+    "phase":"P5",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-17",
+    "parent_task":"T01",
+    "title":"Full Script Parsing",
+    "reference":"4-K",
+    "task_type":"Script Understanding",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-18",
+    "parent_task":"T01",
+    "title":"Deterministic Planning",
+    "reference":"4-K",
+    "task_type":"Script Understanding",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-19",
+    "parent_task":"T01",
+    "title":"Retry And Failure Handling",
+    "reference":"4-K",
+    "task_type":"QA",
+    "phase":"P6",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-20",
+    "parent_task":"T01",
+    "title":"Offline Operation Validation",
+    "reference":"4-K",
+    "task_type":"QA",
+    "phase":"P6",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-21",
+    "parent_task":"T01",
+    "title":"Arabic Dialect Accuracy Validation",
+    "reference":"4-K",
+    "task_type":"QA",
+    "phase":"P6",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-4-22",
+    "parent_task":"T01",
+    "title":"Auto Save And Resume System",
+    "reference":"4-K",
+    "task_type":"Infrastructure",
+    "phase":"P5",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-5-01",
+    "parent_task":"T02",
+    "title":"Text To Image",
+    "reference":"5-A-2",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-02",
+    "parent_task":"T02",
+    "title":"Image To Image",
+    "reference":"5-A-3",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-03",
+    "parent_task":"T02",
+    "title":"Reference Images System",
+    "reference":"5-B",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-04",
+    "parent_task":"T02",
+    "title":"Multi Reference Per Character",
+    "reference":"5-B-1",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-05",
+    "parent_task":"T02",
+    "title":"Reference Image Weighting",
+    "reference":"5-B-1",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-06",
+    "parent_task":"T02",
+    "title":"Character Pack Export",
+    "reference":"5-B-1",
+    "task_type":"Infrastructure",
+    "phase":"P5",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-07",
+    "parent_task":"T02",
+    "title":"Character Pack Import",
+    "reference":"5-B-1",
+    "task_type":"Infrastructure",
+    "phase":"P5",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-08",
+    "parent_task":"T02",
+    "title":"Reference Voice Link",
+    "reference":"5-B-2",
+    "task_type":"Voice",
+    "phase":"P3",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-09",
+    "parent_task":"T02",
+    "title":"Identity Lock",
+    "reference":"5-C",
+    "task_type":"Image Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-10",
+    "parent_task":"T02",
+    "title":"Auto Quality Guard",
+    "reference":"5-C-1",
+    "task_type":"QA",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-11",
+    "parent_task":"T02",
+    "title":"Automatic Negative Prompt System",
+    "reference":"5-C-1",
+    "task_type":"QA",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-12",
+    "parent_task":"T02",
+    "title":"Seed Lock System",
+    "reference":"5-C-1",
+    "task_type":"Image Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-13",
+    "parent_task":"T02",
+    "title":"Outfit Lock",
+    "reference":"5-C-2",
+    "task_type":"Image Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-14",
+    "parent_task":"T02",
+    "title":"Hair Style Lock",
+    "reference":"5-C-2",
+    "task_type":"Image Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-15",
+    "parent_task":"T02",
+    "title":"Makeup Style Lock",
+    "reference":"5-C-2",
+    "task_type":"Image Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-16",
+    "parent_task":"T02",
+    "title":"Reference Image Update",
+    "reference":"5-D",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-17",
+    "parent_task":"T02",
+    "title":"Reference Image Dropdown",
+    "reference":"5-E",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-18",
+    "parent_task":"T02",
+    "title":"Quality Benchmark Validation",
+    "reference":"5-F",
+    "task_type":"QA",
+    "phase":"P6",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-19",
+    "parent_task":"T02",
+    "title":"Arabic Text Rendering",
+    "reference":"5-G",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-20",
+    "parent_task":"T02",
+    "title":"Skip Step Logic",
+    "reference":"5-H",
+    "task_type":"Smart Director",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-21",
+    "parent_task":"T02",
+    "title":"Automatic Mode Integration",
+    "reference":"5-I-1",
+    "task_type":"Smart Director",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-22",
+    "parent_task":"T02",
+    "title":"Manual Mode Integration",
+    "reference":"5-I-1",
+    "task_type":"Smart Director",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-23",
+    "parent_task":"T02",
+    "title":"Standalone Image Generator",
+    "reference":"5-I-2",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-24",
+    "parent_task":"T02",
+    "title":"16:9 Output",
+    "reference":"5-A",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-25",
+    "parent_task":"T02",
+    "title":"9:16 Output",
+    "reference":"5-A",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-26",
+    "parent_task":"T02",
+    "title":"1:1 Output",
+    "reference":"5-A",
+    "task_type":"Image Generation",
+    "phase":"P2",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-27",
+    "parent_task":"T02",
+    "title":"4K Image Output",
+    "reference":"5-A-1",
+    "task_type":"Image Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+
+  {
+    "id":"ST-5-28",
+    "parent_task":"T02",
+    "title":"Cinematic Lighting",
+    "reference":"5-A",
+    "task_type":"Image Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-01",
+    "parent_task":"T03",
+    "title":"Single Image Animation",
+    "reference":"6-A",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-02",
+    "parent_task":"T03",
+    "title":"Multi Image Animation",
+    "reference":"6-A",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-03",
+    "parent_task":"T03",
+    "title":"Talking Head Animation",
+    "reference":"6-A",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-04",
+    "parent_task":"T03",
+    "title":"Upper Body Animation",
+    "reference":"6-A",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-05",
+    "parent_task":"T03",
+    "title":"Full Body Animation",
+    "reference":"6-A",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-06",
+    "parent_task":"T03",
+    "title":"Facial Expression Control",
+    "reference":"6-B",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-07",
+    "parent_task":"T03",
+    "title":"Eye Blink Control",
+    "reference":"6-B",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-08",
+    "parent_task":"T03",
+    "title":"Eye Direction Control",
+    "reference":"6-B",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-09",
+    "parent_task":"T03",
+    "title":"Head Rotation Control",
+    "reference":"6-B",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-10",
+    "parent_task":"T03",
+    "title":"Body Motion Control",
+    "reference":"6-B",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-11",
+    "parent_task":"T03",
+    "title":"Arabic Lip Sync Engine",
+    "reference":"6-C",
+    "task_type":"Lip Sync",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-12",
+    "parent_task":"T03",
+    "title":"Word Level Lip Sync",
+    "reference":"6-C",
+    "task_type":"Lip Sync",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-13",
+    "parent_task":"T03",
+    "title":"Phoneme Based Lip Sync",
+    "reference":"6-C",
+    "task_type":"Lip Sync",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-14",
+    "parent_task":"T03",
+    "title":"Emotion Aware Lip Sync",
+    "reference":"6-C",
+    "task_type":"Lip Sync",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-15",
+    "parent_task":"T03",
+    "title":"Lip Sync QA Validation",
+    "reference":"6-C",
+    "task_type":"QA",
+    "phase":"P6",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-16",
+    "parent_task":"T03",
+    "title":"Identity Preservation",
+    "reference":"6-D",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-17",
+    "parent_task":"T03",
+    "title":"Character Consistency",
+    "reference":"6-D",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-18",
+    "parent_task":"T03",
+    "title":"Clothing Consistency",
+    "reference":"6-D",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-19",
+    "parent_task":"T03",
+    "title":"Scene Consistency",
+    "reference":"6-D",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-20",
+    "parent_task":"T03",
+    "title":"4K Animation Output",
+    "reference":"6-E",
+    "task_type":"Video Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-21",
+    "parent_task":"T03",
+    "title":"16:9 Animation Output",
+    "reference":"6-E",
+    "task_type":"Video Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-22",
+    "parent_task":"T03",
+    "title":"9:16 Animation Output",
+    "reference":"6-E",
+    "task_type":"Video Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-23",
+    "parent_task":"T03",
+    "title":"1:1 Animation Output",
+    "reference":"6-E",
+    "task_type":"Video Generation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-24",
+    "parent_task":"T03",
+    "title":"Automatic Animation Mode",
+    "reference":"6-F",
+    "task_type":"Smart Director",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-25",
+    "parent_task":"T03",
+    "title":"Manual Animation Mode",
+    "reference":"6-F",
+    "task_type":"Smart Director",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+    "id":"ST-6-26",
+    "parent_task":"T03",
+    "title":"Standalone Animation Tool",
+    "reference":"6-F",
+    "task_type":"Animation",
+    "phase":"P4",
+    "status":"Not Started"
+  },
+  {
+  "id":"ST-7-01",
+  "parent_task":"T04",
+  "title":"Arabic TTS Engine",
+  "reference":"7-A",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
 {
-"parent":"DEV-CONFIG",
-"title":"Critical Config Fixes",
-"status":"Completed",
-"progress":100
+  "id":"ST-7-02",
+  "parent_task":"T04",
+  "title":"Voice Cloning Engine",
+  "reference":"7-A",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-03",
+  "parent_task":"T04",
+  "title":"Reference Voice Upload",
+  "reference":"7-A",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-04",
+  "parent_task":"T04",
+  "title":"Voice Character Packs",
+  "reference":"7-A",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-05",
+  "parent_task":"T04",
+  "title":"Voice Pack Export",
+  "reference":"7-A",
+  "task_type":"Voice",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-06",
+  "parent_task":"T04",
+  "title":"Voice Pack Import",
+  "reference":"7-A",
+  "task_type":"Voice",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-07",
+  "parent_task":"T04",
+  "title":"Male Voice Generation",
+  "reference":"7-B",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-08",
+  "parent_task":"T04",
+  "title":"Female Voice Generation",
+  "reference":"7-B",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-09",
+  "parent_task":"T04",
+  "title":"Child Voice Generation",
+  "reference":"7-B",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-10",
+  "parent_task":"T04",
+  "title":"Elderly Voice Generation",
+  "reference":"7-B",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-11",
+  "parent_task":"T04",
+  "title":"Emotion Control",
+  "reference":"7-C",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-12",
+  "parent_task":"T04",
+  "title":"Sad Emotion",
+  "reference":"7-C",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-13",
+  "parent_task":"T04",
+  "title":"Happy Emotion",
+  "reference":"7-C",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-14",
+  "parent_task":"T04",
+  "title":"Angry Emotion",
+  "reference":"7-C",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-15",
+  "parent_task":"T04",
+  "title":"Fear Emotion",
+  "reference":"7-C",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-16",
+  "parent_task":"T04",
+  "title":"Whisper Mode",
+  "reference":"7-D",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-17",
+  "parent_task":"T04",
+  "title":"Shouting Mode",
+  "reference":"7-D",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-18",
+  "parent_task":"T04",
+  "title":"Breathing Simulation",
+  "reference":"7-D",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-19",
+  "parent_task":"T04",
+  "title":"Pause Simulation",
+  "reference":"7-D",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-20",
+  "parent_task":"T04",
+  "title":"Arabic Dialect System",
+  "reference":"7-E",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-21",
+  "parent_task":"T04",
+  "title":"Egyptian Dialect",
+  "reference":"7-E",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-22",
+  "parent_task":"T04",
+  "title":"Levant Dialect",
+  "reference":"7-E",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-23",
+  "parent_task":"T04",
+  "title":"Gulf Dialect",
+  "reference":"7-E",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-24",
+  "parent_task":"T04",
+  "title":"Maghrebi Dialect",
+  "reference":"7-E",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-25",
+  "parent_task":"T04",
+  "title":"Singing Voice Generation",
+  "reference":"7-F",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-26",
+  "parent_task":"T04",
+  "title":"Voice Enhancement",
+  "reference":"7-G",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-27",
+  "parent_task":"T04",
+  "title":"Noise Removal",
+  "reference":"7-G",
+  "task_type":"Voice",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-28",
+  "parent_task":"T04",
+  "title":"Voice Editor",
+  "reference":"7-H",
+  "task_type":"Voice",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-29",
+  "parent_task":"T04",
+  "title":"Word Level Editor",
+  "reference":"7-H",
+  "task_type":"Voice",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-30",
+  "parent_task":"T04",
+  "title":"Phoneme Editor",
+  "reference":"7-H",
+  "task_type":"Voice",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-31",
+  "parent_task":"T04",
+  "title":"Voice QA Validation",
+  "reference":"7-I",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-32",
+  "parent_task":"T04",
+  "title":"Arabic Pronunciation Validation",
+  "reference":"7-I",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-7-33",
+  "parent_task":"T04",
+  "title":"Offline Voice Validation",
+  "reference":"7-I",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+  {
+  "id":"ST-8-01",
+  "parent_task":"T05",
+  "title":"Offline Sound Library Core",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-02",
+  "parent_task":"T05",
+  "title":"Emotional Sound Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-03",
+  "parent_task":"T05",
+  "title":"Military Sound Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-04",
+  "parent_task":"T05",
+  "title":"Silence And Tension Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-05",
+  "parent_task":"T05",
+  "title":"Room Ambience Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-06",
+  "parent_task":"T05",
+  "title":"City Ambience Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-07",
+  "parent_task":"T05",
+  "title":"Nature Ambience Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-08",
+  "parent_task":"T05",
+  "title":"Crowd Ambience Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-09",
+  "parent_task":"T05",
+  "title":"Broadcast And Phone Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-10",
+  "parent_task":"T05",
+  "title":"Chase Scene Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-11",
+  "parent_task":"T05",
+  "title":"Ancient Combat Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-12",
+  "parent_task":"T05",
+  "title":"Arabic Cultural Effects",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-13",
+  "parent_task":"T05",
+  "title":"Historical Era Ambiences",
+  "reference":"8-A",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-14",
+  "parent_task":"T05",
+  "title":"Foley Library",
+  "reference":"8-B",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-15",
+  "parent_task":"T05",
+  "title":"Footsteps Foley",
+  "reference":"8-B",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-16",
+  "parent_task":"T05",
+  "title":"Clothing Foley",
+  "reference":"8-B",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-17",
+  "parent_task":"T05",
+  "title":"Object Handling Foley",
+  "reference":"8-B",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-18",
+  "parent_task":"T05",
+  "title":"Arabic Historical Foley",
+  "reference":"8-B",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-19",
+  "parent_task":"T05",
+  "title":"Audio Search Engine",
+  "reference":"8-C",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-20",
+  "parent_task":"T05",
+  "title":"Keyword Search",
+  "reference":"8-C",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-21",
+  "parent_task":"T05",
+  "title":"Arabic Search Support",
+  "reference":"8-C",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-22",
+  "parent_task":"T05",
+  "title":"Audio Preview Player",
+  "reference":"8-D",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-23",
+  "parent_task":"T05",
+  "title":"Drag And Drop Audio",
+  "reference":"8-D",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-24",
+  "parent_task":"T05",
+  "title":"Smart Audio Routing",
+  "reference":"8-E",
+  "task_type":"Smart Director",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-25",
+  "parent_task":"T05",
+  "title":"Auto Ambience Selection",
+  "reference":"8-E",
+  "task_type":"Smart Director",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-26",
+  "parent_task":"T05",
+  "title":"Auto Foley Selection",
+  "reference":"8-E",
+  "task_type":"Smart Director",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-27",
+  "parent_task":"T05",
+  "title":"Multi Layer Audio Mixing",
+  "reference":"8-F",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-28",
+  "parent_task":"T05",
+  "title":"Volume Balancing",
+  "reference":"8-F",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-29",
+  "parent_task":"T05",
+  "title":"Offline Audio Validation",
+  "reference":"8-G",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-8-30",
+  "parent_task":"T05",
+  "title":"Audio Quality Benchmark",
+  "reference":"8-G",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+  {
+  "id":"ST-9-01",
+  "parent_task":"T06",
+  "title":"Smart Director Core Engine",
+  "reference":"9-A",
+  "task_type":"Smart Director",
+  "phase":"P2",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-02",
+  "parent_task":"T06",
+  "title":"Automatic Mode",
+  "reference":"9-A",
+  "task_type":"Smart Director",
+  "phase":"P2",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-03",
+  "parent_task":"T06",
+  "title":"Manual Mode",
+  "reference":"9-A",
+  "task_type":"Smart Director",
+  "phase":"P2",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-04",
+  "parent_task":"T06",
+  "title":"Scene Understanding",
+  "reference":"9-B",
+  "task_type":"Script Understanding",
+  "phase":"P2",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-05",
+  "parent_task":"T06",
+  "title":"Scene Classification",
+  "reference":"9-B",
+  "task_type":"Script Understanding",
+  "phase":"P2",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-06",
+  "parent_task":"T06",
+  "title":"Dialogue Scene Detection",
+  "reference":"9-B",
+  "task_type":"Script Understanding",
+  "phase":"P2",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-07",
+  "parent_task":"T06",
+  "title":"Narration Scene Detection",
+  "reference":"9-B",
+  "task_type":"Script Understanding",
+  "phase":"P2",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-08",
+  "parent_task":"T06",
+  "title":"Historical Scene Detection",
+  "reference":"9-B",
+  "task_type":"Script Understanding",
+  "phase":"P2",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-09",
+  "parent_task":"T06",
+  "title":"Tool Routing Engine",
+  "reference":"9-C",
+  "task_type":"Smart Director",
+  "phase":"P2",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-10",
+  "parent_task":"T06",
+  "title":"Image Generator Routing",
+  "reference":"9-C",
+  "task_type":"Smart Director",
+  "phase":"P2",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-11",
+  "parent_task":"T06",
+  "title":"Voice Generator Routing",
+  "reference":"9-C",
+  "task_type":"Smart Director",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-12",
+  "parent_task":"T06",
+  "title":"Animation Routing",
+  "reference":"9-C",
+  "task_type":"Smart Director",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-13",
+  "parent_task":"T06",
+  "title":"Timeline Routing",
+  "reference":"9-C",
+  "task_type":"Smart Director",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-14",
+  "parent_task":"T06",
+  "title":"Camera Logic Engine",
+  "reference":"9-D",
+  "task_type":"Video Generation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-15",
+  "parent_task":"T06",
+  "title":"Camera Shot Selection",
+  "reference":"9-D",
+  "task_type":"Video Generation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-16",
+  "parent_task":"T06",
+  "title":"Close-Up Decision Logic",
+  "reference":"9-D",
+  "task_type":"Video Generation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-17",
+  "parent_task":"T06",
+  "title":"Wide Shot Decision Logic",
+  "reference":"9-D",
+  "task_type":"Video Generation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-18",
+  "parent_task":"T06",
+  "title":"Motion Logic Engine",
+  "reference":"9-E",
+  "task_type":"Animation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-19",
+  "parent_task":"T06",
+  "title":"Gesture Selection Logic",
+  "reference":"9-E",
+  "task_type":"Animation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-20",
+  "parent_task":"T06",
+  "title":"Emotion Driven Motion",
+  "reference":"9-E",
+  "task_type":"Animation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-21",
+  "parent_task":"T06",
+  "title":"Audio Logic Engine",
+  "reference":"9-F",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-22",
+  "parent_task":"T06",
+  "title":"Automatic Ambience Selection",
+  "reference":"9-F",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-23",
+  "parent_task":"T06",
+  "title":"Automatic Foley Selection",
+  "reference":"9-F",
+  "task_type":"Sound Library",
+  "phase":"P3",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-24",
+  "parent_task":"T06",
+  "title":"Video Model Selection",
+  "reference":"9-G",
+  "task_type":"Video Generation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-25",
+  "parent_task":"T06",
+  "title":"WAN Model Routing",
+  "reference":"9-G",
+  "task_type":"Video Generation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-26",
+  "parent_task":"T06",
+  "title":"Hunyuan Model Routing",
+  "reference":"9-G",
+  "task_type":"Video Generation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-27",
+  "parent_task":"T06",
+  "title":"SkyReels Model Routing",
+  "reference":"9-G",
+  "task_type":"Video Generation",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-28",
+  "parent_task":"T06",
+  "title":"Character Identity Decision Logic",
+  "reference":"9-H",
+  "task_type":"Smart Director",
+  "phase":"P4",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-29",
+  "parent_task":"T06",
+  "title":"Automatic Retry Logic",
+  "reference":"9-I",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-30",
+  "parent_task":"T06",
+  "title":"Quality Failure Recovery",
+  "reference":"9-I",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-31",
+  "parent_task":"T06",
+  "title":"Offline Validation",
+  "reference":"9-J",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-9-32",
+  "parent_task":"T06",
+  "title":"End To End Scenario Validation",
+  "reference":"9-J",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+  {
+  "id":"ST-10-01",
+  "parent_task":"T07",
+  "title":"Timeline Editor Core",
+  "reference":"10-A",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-02",
+  "parent_task":"T07",
+  "title":"Multi Track Timeline",
+  "reference":"10-A",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-03",
+  "parent_task":"T07",
+  "title":"Video Track Support",
+  "reference":"10-A",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-04",
+  "parent_task":"T07",
+  "title":"Audio Track Support",
+  "reference":"10-A",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-05",
+  "parent_task":"T07",
+  "title":"Image Track Support",
+  "reference":"10-A",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-06",
+  "parent_task":"T07",
+  "title":"Drag And Drop Clips",
+  "reference":"10-B",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-07",
+  "parent_task":"T07",
+  "title":"Clip Reordering",
+  "reference":"10-B",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-08",
+  "parent_task":"T07",
+  "title":"Clip Trimming",
+  "reference":"10-B",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-09",
+  "parent_task":"T07",
+  "title":"Clip Splitting",
+  "reference":"10-B",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-10",
+  "parent_task":"T07",
+  "title":"Clip Merging",
+  "reference":"10-B",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-11",
+  "parent_task":"T07",
+  "title":"Frame Accurate Editing",
+  "reference":"10-C",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-12",
+  "parent_task":"T07",
+  "title":"Timeline Zoom",
+  "reference":"10-C",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-13",
+  "parent_task":"T07",
+  "title":"Waveform Display",
+  "reference":"10-C",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-14",
+  "parent_task":"T07",
+  "title":"Transition Engine",
+  "reference":"10-D",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-15",
+  "parent_task":"T07",
+  "title":"Fade Transition",
+  "reference":"10-D",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-16",
+  "parent_task":"T07",
+  "title":"Cross Fade Transition",
+  "reference":"10-D",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-17",
+  "parent_task":"T07",
+  "title":"Cut Transition",
+  "reference":"10-D",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-18",
+  "parent_task":"T07",
+  "title":"Media Import System",
+  "reference":"10-E",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-19",
+  "parent_task":"T07",
+  "title":"Video Import",
+  "reference":"10-E",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-20",
+  "parent_task":"T07",
+  "title":"Image Import",
+  "reference":"10-E",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-21",
+  "parent_task":"T07",
+  "title":"Audio Import",
+  "reference":"10-E",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-22",
+  "parent_task":"T07",
+  "title":"Arabic Text Overlay",
+  "reference":"10-F",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-23",
+  "parent_task":"T07",
+  "title":"RTL Text Rendering",
+  "reference":"10-F",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-24",
+  "parent_task":"T07",
+  "title":"Chrome Key Compositing",
+  "reference":"10-G",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-25",
+  "parent_task":"T07",
+  "title":"Background Replacement",
+  "reference":"10-G",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-26",
+  "parent_task":"T07",
+  "title":"Per Track Volume Control",
+  "reference":"10-H",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-27",
+  "parent_task":"T07",
+  "title":"4K Export",
+  "reference":"10-I",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-28",
+  "parent_task":"T07",
+  "title":"16:9 Export",
+  "reference":"10-I",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-29",
+  "parent_task":"T07",
+  "title":"9:16 Export",
+  "reference":"10-I",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-30",
+  "parent_task":"T07",
+  "title":"1:1 Export",
+  "reference":"10-I",
+  "task_type":"Timeline Editor",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-10-31",
+  "parent_task":"T07",
+  "title":"Timeline QA Validation",
+  "reference":"10-J",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+  {
+  "id":"ST-11-01",
+  "parent_task":"T08",
+  "title":"Smart Edit Layer Core",
+  "reference":"11-A",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-02",
+  "parent_task":"T08",
+  "title":"AI Edit Suggestions",
+  "reference":"11-A",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-03",
+  "parent_task":"T08",
+  "title":"Auto Scene Analysis",
+  "reference":"11-A",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-04",
+  "parent_task":"T08",
+  "title":"Scene Duration Optimization",
+  "reference":"11-B",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-05",
+  "parent_task":"T08",
+  "title":"Auto Cut Suggestions",
+  "reference":"11-B",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-06",
+  "parent_task":"T08",
+  "title":"Auto Transition Suggestions",
+  "reference":"11-B",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-07",
+  "parent_task":"T08",
+  "title":"Auto Pacing Engine",
+  "reference":"11-C",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-08",
+  "parent_task":"T08",
+  "title":"Slow Scene Detection",
+  "reference":"11-C",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-09",
+  "parent_task":"T08",
+  "title":"Fast Scene Detection",
+  "reference":"11-C",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-10",
+  "parent_task":"T08",
+  "title":"Emotion Based Timing",
+  "reference":"11-C",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-11",
+  "parent_task":"T08",
+  "title":"Dialogue Timing Optimization",
+  "reference":"11-D",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-12",
+  "parent_task":"T08",
+  "title":"Narration Timing Optimization",
+  "reference":"11-D",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-13",
+  "parent_task":"T08",
+  "title":"Lip Sync Timing Correction",
+  "reference":"11-D",
+  "task_type":"Lip Sync",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-14",
+  "parent_task":"T08",
+  "title":"Scene Balance Engine",
+  "reference":"11-E",
+  "task_type":"Video Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-15",
+  "parent_task":"T08",
+  "title":"Visual Balance Validation",
+  "reference":"11-E",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-16",
+  "parent_task":"T08",
+  "title":"Audio Balance Validation",
+  "reference":"11-E",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-17",
+  "parent_task":"T08",
+  "title":"Automatic Quality Improvements",
+  "reference":"11-F",
+  "task_type":"QA",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-18",
+  "parent_task":"T08",
+  "title":"Automatic Upscaling",
+  "reference":"11-F",
+  "task_type":"Image Generation",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-19",
+  "parent_task":"T08",
+  "title":"Automatic Audio Enhancement",
+  "reference":"11-F",
+  "task_type":"Voice",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-20",
+  "parent_task":"T08",
+  "title":"Automatic Noise Cleanup",
+  "reference":"11-F",
+  "task_type":"Voice",
+  "phase":"P5",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-21",
+  "parent_task":"T08",
+  "title":"Render Readiness Check",
+  "reference":"11-G",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-22",
+  "parent_task":"T08",
+  "title":"Export Readiness Validation",
+  "reference":"11-G",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-23",
+  "parent_task":"T08",
+  "title":"Offline Validation",
+  "reference":"11-H",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-11-24",
+  "parent_task":"T08",
+  "title":"Full Project Validation",
+  "reference":"11-H",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+  {
+  "id":"ST-12-01",
+  "parent_task":"T09",
+  "title":"System QA Framework",
+  "reference":"12-A",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-02",
+  "parent_task":"T09",
+  "title":"Hasaballa GPT Validation",
+  "reference":"12-A",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-03",
+  "parent_task":"T09",
+  "title":"Image Generation Validation",
+  "reference":"12-A",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-04",
+  "parent_task":"T09",
+  "title":"Animation Validation",
+  "reference":"12-A",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-05",
+  "parent_task":"T09",
+  "title":"Voice Validation",
+  "reference":"12-A",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-06",
+  "parent_task":"T09",
+  "title":"Timeline Validation",
+  "reference":"12-A",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-07",
+  "parent_task":"T09",
+  "title":"Arabic Language Validation",
+  "reference":"12-B",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-08",
+  "parent_task":"T09",
+  "title":"Arabic Dialect Validation",
+  "reference":"12-B",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-09",
+  "parent_task":"T09",
+  "title":"Offline Validation",
+  "reference":"12-C",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-10",
+  "parent_task":"T09",
+  "title":"Performance Benchmark",
+  "reference":"12-D",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-11",
+  "parent_task":"T09",
+  "title":"RTX 5090 Validation",
+  "reference":"12-D",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-12",
+  "parent_task":"T09",
+  "title":"Stress Testing",
+  "reference":"12-D",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-13",
+  "parent_task":"T09",
+  "title":"Acceptance Criteria Validation",
+  "reference":"12-E",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-14",
+  "parent_task":"T09",
+  "title":"Regression Testing",
+  "reference":"12-E",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-12-15",
+  "parent_task":"T09",
+  "title":"Final QA Approval",
+  "reference":"12-F",
+  "task_type":"QA",
+  "phase":"P6",
+  "status":"Not Started"
+},
+  {
+  "id":"ST-13-01",
+  "parent_task":"T10",
+  "title":"Final Integration",
+  "reference":"13-A",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-02",
+  "parent_task":"T10",
+  "title":"Cross Module Integration",
+  "reference":"13-A",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-03",
+  "parent_task":"T10",
+  "title":"Windows Packaging",
+  "reference":"13-B",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-04",
+  "parent_task":"T10",
+  "title":"Offline Packaging",
+  "reference":"13-B",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-05",
+  "parent_task":"T10",
+  "title":"Installer Creation",
+  "reference":"13-B",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-06",
+  "parent_task":"T10",
+  "title":"Backup System Packaging",
+  "reference":"13-C",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-07",
+  "parent_task":"T10",
+  "title":"Documentation Delivery",
+  "reference":"13-D",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-08",
+  "parent_task":"T10",
+  "title":"User Manual Delivery",
+  "reference":"13-D",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-09",
+  "parent_task":"T10",
+  "title":"Technical Documentation",
+  "reference":"13-D",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-10",
+  "parent_task":"T10",
+  "title":"Final Acceptance Testing",
+  "reference":"13-E",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-11",
+  "parent_task":"T10",
+  "title":"Final Client Approval",
+  "reference":"13-E",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
+},
+{
+  "id":"ST-13-12",
+  "parent_task":"T10",
+  "title":"Project Closure",
+  "reference":"13-F",
+  "task_type":"Delivery",
+  "phase":"P6",
+  "status":"Not Started"
 }
 ]
