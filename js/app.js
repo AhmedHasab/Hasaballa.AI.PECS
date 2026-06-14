@@ -1484,7 +1484,7 @@ alert(
 
 async function forceLoad(){
 
-await loadFromSupabase();
+/*wait loadFromSupabase();*/
 
 refreshAll();
 
@@ -1522,11 +1522,9 @@ await forceSave();
 
 setInterval(
 
-async ()=>{
+()=>{
 
 saveLocal();
-
-await saveToSupabase();
 
 },
 
@@ -1594,7 +1592,7 @@ await loadAllData();
 
 loadLocal();
 
-await loadFromSupabase();
+/*await loadFromSupabase();*/
 
 populateFilters();
 
@@ -1602,7 +1600,7 @@ refreshAll();
 
 bindFilters();
 
-await testSupabase();
+/*await testSupabase();*/
 
 log(
 "System Ready"
