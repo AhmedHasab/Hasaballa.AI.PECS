@@ -414,5 +414,31 @@ min-width:120px;
 .developer-select{
 min-width:150px;
 }
+body{
+    margin:0;
+    padding:20px;
+    width:100%;
+    overflow-x:auto;
+}
 
+.container{
+    width:100%;
+    max-width:1900px;
+    margin:0 auto;
+}
+
+.section{
+    width:100%;
+    overflow:hidden;
+}
+
+.table-wrapper{
+    width:100%;
+    overflow-x:auto;
+}
+
+#tasksTable{
+    width:1800px;
+    min-width:1800px;
+}
 </style>
