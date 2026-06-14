@@ -1,3 +1,10 @@
+/* =====================================================
+   HASABALLA AI PECS
+   APP.JS
+   PART 1 / 3
+   CONFIG + LOAD DATA + DASHBOARD
+===================================================== */
+
 const SUPABASE_URL =
 "https://oivtndqstklnsxwherpp.supabase.co";
 
@@ -10,78 +17,59 @@ SUPABASE_URL,
 SUPABASE_KEY
 );
 
-// ======================================
-// GLOBAL DATA
-// ======================================
+const SUPABASE_TABLE =
+"project_state";
+
+/* =====================================================
+   GLOBAL DATA
+===================================================== */
 
 let tasks = [];
 let subtasks = [];
-let masterTasks = [];
-let mappings = [];
+let reports = [];
+
 let phases = [];
 let milestones = [];
-let reports = [];
-let dailyReports = [];
+
+let masterTasks = [];
+let mappings = [];
 let developers = [];
 
-// ======================================
-// LOCAL STORAGE
-// ======================================
-
-const STORAGE_KEY =
-"hasaballa_ai_pecs_v2";
-
 let notesStore = {};
-
 let developerStore = {};
+let subtaskStore = {};
 
-let appReady = false;
+let allRows = [];
 
-// ======================================
-// DOM HELPERS
-// ======================================
+/* =====================================================
+   HELPERS
+===================================================== */
 
-function $(id){
+function log(...msg){
+
+console.log(
+"[PECS]",
+...msg
+);
+
+}
+
+function error(...msg){
+
+console.error(
+"[PECS ERROR]",
+...msg
+);
+
+}
+
+function byId(id){
 
 return document.getElementById(id);
 
 }
 
-function create(tag){
-
-return document.createElement(tag);
-
-}
-
-// ======================================
-// LOGGING
-// ======================================
-
-function log(message){
-
-console.log(
-"[Hasaballa AI]",
-message
-);
-
-}
-
-function error(message,data){
-
-console.error(
-"[Hasaballa AI]",
-message,
-data
-);
-
-}
-// ======================================
-// JSON LOADER
-// ======================================
-
 async function loadJson(path){
-
-try{
 
 const response =
 await fetch(path);
@@ -97,30 +85,29 @@ throw new Error(
 return await response.json();
 
 }
-catch(err){
 
-error(
-`JSON Load Error: ${path}`,
-err
-);
-
-return [];
-
-}
-
-}
-
-// ======================================
-// LOAD ALL DATA
-// ======================================
+/* =====================================================
+   LOAD ALL FILES
+===================================================== */
 
 async function loadAllData(){
 
-log(
-"Loading JSON Files..."
-);
+try{
 
-const results =
+[
+tasks,
+subtasks,
+reports,
+phases,
+milestones,
+masterTasks,
+mappings,
+developers
+
+]
+
+=
+
 await Promise.all([
 
 loadJson(
@@ -132,11 +119,7 @@ loadJson(
 ),
 
 loadJson(
-"./data/master_tasks.json"
-),
-
-loadJson(
-"./data/mappings.json"
+"./data/reports.json"
 ),
 
 loadJson(
@@ -148,11 +131,11 @@ loadJson(
 ),
 
 loadJson(
-"./data/reports.json"
+"./data/master_tasks.json"
 ),
 
 loadJson(
-"./data/daily_reports.json"
+"./data/mappings.json"
 ),
 
 loadJson(
@@ -161,69 +144,62 @@ loadJson(
 
 ]);
 
-tasks =
-results[0];
-
-subtasks =
-results[1];
-
-masterTasks =
-results[2];
-
-mappings =
-results[3];
-
-phases =
-results[4];
-
-milestones =
-results[5];
-
-reports =
-results[6];
-
-dailyReports =
-results[7];
-
-developers =
-results[8];
-
 log(
-"All JSON Files Loaded"
+"All JSON Loaded"
 );
 
-populateFilters();
+log(
+"Tasks:",
+tasks.length
+);
+
+log(
+"Subtasks:",
+subtasks.length
+);
+
+log(
+"Reports:",
+reports.length
+);
+
+}
+catch(err){
+
+error(
+"LOAD ERROR",
+err
+);
+
+alert(
+"Error Loading JSON Files"
+);
 
 }
 
-// ======================================
-// LOOKUP HELPERS
-// ======================================
+}
+
+/* =====================================================
+   FINDERS
+===================================================== */
 
 function getMasterTask(id){
 
 return masterTasks.find(
-t => t.id === id
+m => m.id === id
 );
 
 }
 
-function getSubtasks(masterId){
-
-return subtasks.filter(
-s =>
-s.parent_task ===
-masterId
-);
-
-}
-
-function getMapping(masterId){
+function getMappingByTask(title){
 
 return mappings.find(
 m =>
-m.reference_task_id ===
-masterId
+m.developer_task
+?.toLowerCase()
+===
+title
+?.toLowerCase()
 );
 
 }
@@ -247,446 +223,293 @@ m => m.id === id
 function getDeveloper(name){
 
 return developers.find(
-d => d.name === name
+d =>
+d.name
+?.toLowerCase()
+===
+name
+?.toLowerCase()
 );
 
 }
 
-// ======================================
-// FILTER DROPDOWNS
-// ======================================
+/* =====================================================
+   DASHBOARD
+===================================================== */
 
-function populateFilters(){
+function renderDashboard(){
 
-const phaseFilter =
-$("phaseFilter");
+const total =
+tasks.length;
 
-const milestoneFilter =
-$("milestoneFilter");
-
-const taskTypeFilter =
-$("taskTypeFilter");
-
-const developerFilter =
-$("developerFilter");
-
-if(phaseFilter){
-
-phaseFilter.innerHTML =
-'<option value="">كل المراحل</option>';
-
-phases
-.filter(
-p =>
-p.id &&
-p.id.startsWith("P")
-)
-.forEach(phase=>{
-
-phaseFilter.innerHTML +=
-`
-
-<option value="${phase.id}">
-${phase.id}
-</option>
-`;
-
-});
-
-}
-
-if(milestoneFilter){
-
-milestoneFilter.innerHTML =
-'<option value="">كل الـ Milestones</option>';
-
-milestones.forEach(ms=>{
-
-milestoneFilter.innerHTML +=
-`
-
-<option value="${ms.id}">
-${ms.id}
-</option>
-`;
-
-});
-
-}
-
-if(taskTypeFilter){
-
-taskTypeFilter.innerHTML =
-'<option value="">كل أنواع المهام</option>';
-
-masterTasks.forEach(task=>{
-
-taskTypeFilter.innerHTML +=
-`
-
-<option value="${task.task_type}">
-${task.task_type}
-</option>
-`;
-
-});
-
-}
-
-if(developerFilter){
-
-developerFilter.innerHTML =
-'<option value="">كل المطورين</option>';
-
-developers.forEach(dev=>{
-
-developerFilter.innerHTML +=
-`
-
-<option value="${dev.name}">
-${dev.name}
-</option>
-`;
-
-});
-
-}
-
-}
-// ======================================
-// RELATIONS ENGINE
-// ======================================
-
-function getTaskMapping(masterId){
-
-return mappings.find(
-m =>
-m.reference_task_id ===
-masterId
-);
-
-}
-
-function getDeveloperTask(masterId){
-
-const mapping =
-getTaskMapping(masterId);
-
-if(!mapping)
-return null;
-
-return tasks.find(
+const completed =
+tasks.filter(
 t =>
-t.id ===
-mapping.developer_task_id
-);
+t.status
+?.toLowerCase()
+===
+"completed"
+).length;
+
+const inProgress =
+tasks.filter(
+t =>
+t.status
+?.toLowerCase()
+===
+"in progress"
+).length;
+
+const remaining =
+total -
+completed;
+
+byId(
+"totalTasks"
+).textContent =
+total;
+
+byId(
+"completedTasks"
+).textContent =
+completed;
+
+byId(
+"inProgressTasks"
+).textContent =
+inProgress;
+
+byId(
+"remainingTasks"
+).textContent =
+remaining;
 
 }
 
-function getMasterPhase(master){
+/* =====================================================
+   PROGRESS BAR
+===================================================== */
 
-if(master.phase)
-return master.phase;
+function progressHtml(value){
 
-const task =
-getDeveloperTask(
-master.id
-);
+return `
 
-if(task && task.phase)
-return task.phase;
+<div class="progress">
 
-return "-";
+<div
+class="progress-bar"
+style="width:${value}%">
+
+${value}%
+
+</div>
+
+</div>
+
+`;
 
 }
 
-function getMasterMilestone(master){
+/* =====================================================
+   STATUS COLORS
+===================================================== */
 
-if(master.milestone)
-return master.milestone;
+function getStatusBadge(status){
 
-const phase =
-getMasterPhase(
-master
-);
-
-const phaseObj =
-phases.find(
-p =>
-p.id === phase
-);
+const s =
+(status || "")
+.toLowerCase();
 
 if(
-phaseObj &&
-phaseObj.milestone
+s === "completed"
 ){
 
-return phaseObj.milestone;
+return `
+<span
+style="
+color:#16a34a;
+font-weight:700;
+">
+Completed
+</span>
+`;
 
 }
 
-return "-";
+if(
+s === "in progress"
+){
+
+return `
+<span
+style="
+color:#f59e0b;
+font-weight:700;
+">
+In Progress
+</span>
+`;
 
 }
 
-// ======================================
-// SUBTASKS
-// ======================================
+return `
+<span
+style="
+color:#64748b;
+font-weight:700;
+">
+Pending
+</span>
+`;
 
-function getMasterSubtasks(masterId){
+}
+
+/* =====================================================
+   SAVE LOCAL
+===================================================== */
+
+function saveLocal(){
+
+localStorage.setItem(
+"hasaballa_notes",
+JSON.stringify(
+notesStore
+)
+);
+
+localStorage.setItem(
+"hasaballa_subtasks",
+JSON.stringify(
+subtaskStore
+)
+);
+
+localStorage.setItem(
+"hasaballa_developers",
+JSON.stringify(
+developerStore
+)
+);
+
+}
+
+/* =====================================================
+   LOAD LOCAL
+===================================================== */
+
+function loadLocal(){
+
+try{
+
+notesStore =
+JSON.parse(
+localStorage.getItem(
+"hasaballa_notes"
+)
+|| "{}"
+);
+
+subtaskStore =
+JSON.parse(
+localStorage.getItem(
+"hasaballa_subtasks"
+)
+|| "{}"
+);
+
+developerStore =
+JSON.parse(
+localStorage.getItem(
+"hasaballa_developers"
+)
+|| "{}"
+);
+
+}
+catch(err){
+
+error(
+"LOCAL STORAGE ERROR",
+err
+);
+
+}
+
+}
+/* =====================================================
+   HASABALLA AI PECS
+   APP.JS
+   PART 2 / 3
+   TASKS + SUBTASKS + REPORTS
+===================================================== */
+
+/* =====================================================
+   SUBTASKS
+===================================================== */
+
+function getSubtasks(masterId){
 
 return subtasks.filter(
-sub =>
-sub.parent_task ===
+s =>
+s.parent_task ===
 masterId
 );
 
 }
 
-function getCompletedSubtasks(masterId){
-
-return getMasterSubtasks(
-masterId
-)
-.filter(
-sub =>
-sub.status ===
-"Completed"
-);
-
-}
-
-// ======================================
-// PROGRESS
-// ======================================
-
-function calculateProgress(masterId){
+function getSubtaskProgress(masterId){
 
 const items =
-getMasterSubtasks(
-masterId
-);
+getSubtasks(masterId);
 
 if(
 items.length === 0
 )
 return 0;
 
-const completed =
-items.filter(
-item =>
-item.status ===
-"Completed"
-).length;
-
-return Math.round(
-(
-completed /
-items.length
-)
-*100
-);
-
-}
-
-function getStatus(masterId){
-
-const progress =
-calculateProgress(
-masterId
-);
-
-if(progress === 100){
-
-return "Completed";
-
-}
-
-if(progress > 0){
-
-return "In Progress";
-
-}
-
-return "Pending";
-
-}
-
-// ======================================
-// DASHBOARD STATS
-// ======================================
-
-function getDashboardStats(){
-
-const total =
-masterTasks.length;
-
 let completed = 0;
 
-let inProgress = 0;
+items.forEach(item=>{
 
-let pending = 0;
-
-masterTasks.forEach(task=>{
-
-const status =
-getStatus(
-task.id
-);
+const saved =
+subtaskStore[item.id];
 
 if(
-status ===
-"Completed"
+saved === true
 ){
 
 completed++;
 
 }
-else if(
-status ===
-"In Progress"
-){
-
-inProgress++;
-
-}
-else{
-
-pending++;
-
-}
 
 });
 
-return {
+return Math.round(
 
-total,
-completed,
-inProgress,
-pending
+(
+completed /
+items.length
+)
+*100
 
-};
-
-}
-
-// ======================================
-// COUNTERS
-// ======================================
-
-function refreshCounters(){
-
-const stats =
-getDashboardStats();
-
-$("totalTasks").innerText =
-stats.total;
-
-$("completedTasks").innerText =
-stats.completed;
-
-$("inProgressTasks").innerText =
-stats.inProgress;
-
-$("remainingTasks").innerText =
-stats.pending;
-
-}
-
-// ======================================
-// TASK TYPE
-// ======================================
-
-function getTaskType(master){
-
-if(
-master.task_type
-){
-
-return master.task_type;
-
-}
-
-const task =
-getDeveloperTask(
-master.id
 );
 
-if(
-task &&
-task.task_type
-){
-
-return task.task_type;
-
 }
 
-return "General";
-
-}
-
-// ======================================
-// WEEK RANGE
-// ======================================
-
-function getWeekRange(master){
-
-if(
-master.week_start &&
-master.week_end
-){
-
-return
-`${master.week_start}
----------------------
-
-${master.week_end}`;
-
-}
-
-const task =
-getDeveloperTask(
-master.id
-);
-
-if(
-task &&
-task.week
-){
-
-return task.week;
-
-}
-
-return "-";
-
-}
-// ======================================
-// DASHBOARD RENDER
-// ======================================
-
-function renderDashboard(){
-
-refreshCounters();
-
-}
-
-// ======================================
-// SUBTASK HTML
-// ======================================
+/* =====================================================
+   SUBTASK HTML
+===================================================== */
 
 function renderSubtasks(masterId){
 
 const items =
-getMasterSubtasks(
-masterId
-);
+getSubtasks(masterId);
 
 if(
 items.length === 0
 ){
 
 return `
-
 <div class="subtask">
 No Subtasks
 </div>
@@ -704,28 +527,17 @@ return items.map(item=>`
 type="checkbox"
 class="subtask-check"
 data-id="${item.id}"
-${item.status==="Completed"
+${subtaskStore[item.id]
 ?
 "checked"
 :
 ""
 }
-
 >
 
-<b>
 ${item.title}
-</b>
 
 </label>
-
-<br>
-
-<small>
-
-${item.task_type || ""}
-
-</small>
 
 </div>
 
@@ -733,26 +545,22 @@ ${item.task_type || ""}
 
 }
 
-// ======================================
-// DEVELOPER
-// ======================================
+/* =====================================================
+   DEVELOPER SELECT
+===================================================== */
 
-function renderDeveloper(master){
-
-const saved =
-developerStore[
-master.id
-];
+function renderDeveloperSelect(taskId){
 
 const current =
-saved || "Rini";
+developerStore[taskId]
+||
+"Rini";
 
 return `
 
 <select
 class="developer-select"
-data-id="${master.id}"
-
+data-task="${taskId}"
 >
 
 ${developers.map(dev=>`
@@ -779,79 +587,86 @@ ${dev.name}
 
 }
 
-// ======================================
-// PROGRESS BAR
-// ======================================
+/* =====================================================
+   NOTES
+===================================================== */
 
-function renderProgress(masterId){
-
-const progress =
-calculateProgress(
-masterId
-);
+function renderNotes(taskId){
 
 return `
 
-<div class="progress">
-
-<div
-class="progress-bar"
-style="
-width:${progress}%;
-"
+<textarea
+class="notes-box"
+data-task="${taskId}"
+placeholder="Notes..."
 >
 
-${progress}%
+${notesStore[taskId]
+||
+""
+}
 
-</div>
-
-</div>
+</textarea>
 
 `;
 
 }
 
-// ======================================
-// TASK ROW
-// ======================================
+/* =====================================================
+   TASK TABLE
+===================================================== */
 
-function buildTaskRow(master){
+function renderTasks(){
+
+const body =
+byId(
+"tasksBody"
+);
+
+if(!body)
+return;
+
+body.innerHTML = "";
+
+masterTasks.forEach(master=>{
 
 const progress =
-calculateProgress(
+getSubtaskProgress(
 master.id
 );
 
-const status =
-getStatus(
-master.id
+const phase =
+master.phase;
+
+const phaseInfo =
+getPhase(
+phase
 );
 
-const rowClass =
-progress === 100
+const milestoneInfo =
+phaseInfo
 ?
-"completed"
+getMilestone(
+phaseInfo.milestone
+)
 :
-"";
+null;
 
-return `
+body.innerHTML += `
 
-<tr class="${rowClass}">
+<tr>
 
 <td>
 
 <input
 type="checkbox"
-class="master-check"
-data-id="${master.id}"
 ${progress===100
 ?
 "checked"
 :
 ""
 }
-
->
+disabled>
 
 </td>
 
@@ -875,15 +690,13 @@ ${master.id}
 
 <td>
 
-${getTaskType(
-master
-)}
+${master.task_type}
 
 </td>
 
 <td>
 
-${master.reference_task || "-"}
+${master.reference_task}
 
 </td>
 
@@ -895,54 +708,57 @@ ${master.id}
 
 <td>
 
-<span class="phase">
-
-${getMasterPhase(
-master
-)}
-
-</span>
+${phase}
 
 </td>
 
 <td>
 
-<span class="milestone">
-
-${getMasterMilestone(
-master
-)}
-
-</span>
-
-</td>
-
-<td>
-
-${getWeekRange(
-master
-)}
+${milestoneInfo
+?
+milestoneInfo.id
+:
+"-"
+}
 
 </td>
 
 <td>
 
-${renderDeveloper(
-master
-)}
+${master.week_start}
+-
+${master.week_end}
 
 </td>
 
 <td>
 
-${status}
-
-</td>
-
-<td>
-
-${renderProgress(
+${renderDeveloperSelect(
 master.id
+)}
+
+</td>
+
+<td>
+
+${getStatusBadge(
+progress===100
+?
+"completed"
+:
+progress>0
+?
+"in progress"
+:
+"pending"
+)}
+
+</td>
+
+<td>
+
+${progressHtml(
+progress
 )}
 
 </td>
@@ -957,15 +773,9 @@ master.id
 
 <td>
 
-<textarea
-data-id="${master.id}"
->
-
-${notesStore[
+${renderNotes(
 master.id
-] || ""}
-
-</textarea>
+)}
 
 </td>
 
@@ -973,67 +783,17 @@ master.id
 
 `;
 
-}
-
-// ======================================
-// TASK TABLE
-// ======================================
-
-function renderTasks(){
-
-const body =
-$("tasksBody");
-
-if(!body)
-return;
-
-body.innerHTML = "";
-
-masterTasks.forEach(master=>{
-
-body.innerHTML +=
-buildTaskRow(
-master
-);
-
 });
 
-attachEvents();
+attachTaskEvents();
 
 }
 
-// ======================================
-// REFRESH ALL
-// ======================================
+/* =====================================================
+   TASK EVENTS
+===================================================== */
 
-function refreshAll(){
-
-renderDashboard();
-
-renderTasks();
-
-}
-// ======================================
-// EVENTS ENGINE
-// ======================================
-
-function attachEvents(){
-
-attachSubtaskEvents();
-
-attachMasterEvents();
-
-attachNotesEvents();
-
-attachDeveloperEvents();
-
-}
-
-// ======================================
-// SUBTASK EVENTS
-// ======================================
-
-function attachSubtaskEvents(){
+function attachTaskEvents(){
 
 document
 .querySelectorAll(
@@ -1048,85 +808,22 @@ function(){
 const id =
 this.dataset.id;
 
-const sub =
-subtasks.find(
-s => s.id === id
-);
+subtaskStore[id] =
+this.checked;
 
-if(!sub)
-return;
+saveLocal();
 
-sub.status =
-this.checked
-?
-"Completed"
-:
-"Pending";
+renderTasks();
 
-saveLocalState();
-
-refreshAll();
+renderDashboard();
 
 });
 
 });
-
-}
-
-// ======================================
-// MASTER EVENTS
-// ======================================
-
-function attachMasterEvents(){
 
 document
 .querySelectorAll(
-".master-check"
-)
-.forEach(box=>{
-
-box.addEventListener(
-"change",
-function(){
-
-const masterId =
-this.dataset.id;
-
-const related =
-getMasterSubtasks(
-masterId
-);
-
-related.forEach(item=>{
-
-item.status =
-this.checked
-?
-"Completed"
-:
-"Pending";
-
-});
-
-saveLocalState();
-
-refreshAll();
-
-});
-
-});
-
-}
-
-// ======================================
-// NOTES EVENTS
-// ======================================
-
-function attachNotesEvents(){
-
-document
-.querySelectorAll(
-"textarea[data-id]"
+".notes-box"
 )
 .forEach(area=>{
 
@@ -1134,25 +831,17 @@ area.addEventListener(
 "input",
 function(){
 
-const id =
-this.dataset.id;
-
-notesStore[id] =
+notesStore[
+this.dataset.task
+]
+=
 this.value;
 
-saveLocalState();
+saveLocal();
 
 });
 
 });
-
-}
-
-// ======================================
-// DEVELOPER EVENTS
-// ======================================
-
-function attachDeveloperEvents(){
 
 document
 .querySelectorAll(
@@ -1164,13 +853,13 @@ select.addEventListener(
 "change",
 function(){
 
-const id =
-this.dataset.id;
-
-developerStore[id] =
+developerStore[
+this.dataset.task
+]
+=
 this.value;
 
-saveLocalState();
+saveLocal();
 
 });
 
@@ -1178,123 +867,16 @@ saveLocalState();
 
 }
 
-// ======================================
-// LOCAL STORAGE SAVE
-// ======================================
-
-function saveLocalState(){
-
-const state = {
-
-subtasks,
-notesStore,
-developerStore
-
-};
-
-localStorage.setItem(
-
-STORAGE_KEY,
-
-JSON.stringify(
-state
-)
-
-);
-
-}
-
-// ======================================
-// LOCAL STORAGE LOAD
-// ======================================
-
-function loadLocalState(){
-
-const raw =
-localStorage.getItem(
-STORAGE_KEY
-);
-
-if(!raw)
-return;
-
-try{
-
-const state =
-JSON.parse(raw);
-
-if(state.subtasks){
-
-subtasks =
-state.subtasks;
-
-}
-
-if(state.notesStore){
-
-notesStore =
-state.notesStore;
-
-}
-
-if(state.developerStore){
-
-developerStore =
-state.developerStore;
-
-}
-
-}
-catch(err){
-
-error(
-"Local Storage Error",
-err
-);
-
-}
-
-}
-
-// ======================================
-// CLEAR STORAGE
-// ======================================
-
-function clearLocalState(){
-
-localStorage.removeItem(
-STORAGE_KEY
-);
-
-}
-
-// ======================================
-// RESTORE UI
-// ======================================
-
-function restoreUI(){
-
-attachEvents();
-
-}
-
-// ======================================
-// AUTO SAVE
-// ======================================
-
-setInterval(()=>{
-
-saveLocalState();
-
-},15000);
-// ======================================
-// WEEKLY REPORTS
-// ======================================
+/* =====================================================
+   WEEKLY REPORTS
+===================================================== */
 
 function renderWeeklyReports(){
 
 const container =
-$("weeklyReports");
+byId(
+"weeklyReports"
+);
 
 if(!container)
 return;
@@ -1303,78 +885,49 @@ container.innerHTML = "";
 
 reports.forEach(report=>{
 
-const completed =
-(report.completed_tasks || [])
-.map(task=>`
-
-<li>
-
-${task}
-
-</li>
-
-`)
-.join("");
-
-const progress =
-(report.in_progress || [])
-.map(task=>`
-
-<li>
-
-${task}
-
-</li>
-
-`)
-.join("");
-
 container.innerHTML += `
 
 <div class="report-card">
 
 <h3>
 
-${report.week || ""}
+${report.week}
 
 </h3>
 
 <p>
 
-${report.period || ""}
+${report.period}
 
 </p>
 
 <p>
 
-<b>
-Status:
-</b>
+<b>Status:</b>
 
-${report.status || ""}
+${report.status}
 
 </p>
 
 <p>
 
-<b>
-Project Manager:
-</b>
+<b>Project Manager:</b>
 
-${report.project_manager || ""}
+${report.project_manager}
 
 </p>
 
 <p>
 
-<b>
-Developers:
-</b>
+<b>Developers:</b>
 
-${(report.developers || [])
-.join(", ")}
+${report.developers.join(
+", "
+)}
 
 </p>
+
+<hr>
 
 <h4>
 
@@ -1384,7 +937,11 @@ Completed Tasks
 
 <ul>
 
-${completed}
+${report.completed_tasks
+.map(item=>`
+<li>${item}</li>
+`)
+.join("")}
 
 </ul>
 
@@ -1396,7 +953,11 @@ In Progress
 
 <ul>
 
-${progress}
+${report.in_progress
+.map(item=>`
+<li>${item}</li>
+`)
+.join("")}
 
 </ul>
 
@@ -1408,48 +969,40 @@ ${progress}
 
 }
 
-// ======================================
-// DAILY REPORTS
-// ======================================
+/* =====================================================
+   DAILY REPORTS
+===================================================== */
 
 function renderDailyReports(){
 
 const container =
-$("dailyReports");
+byId(
+"dailyReports"
+);
 
 if(!container)
 return;
 
-container.innerHTML = "";
-
-// لو الملف موجود
-
-if(
-dailyReports &&
-dailyReports.length
-){
-
-dailyReports.forEach(item=>{
-
-container.innerHTML += `
+container.innerHTML = `
 
 <div class="report-card">
 
 <h3>
 
-${item.date || ""}
+Daily Reports
 
 </h3>
 
 <p>
 
-${item.title || ""}
+Loaded From
+daily_reports.json
 
 </p>
 
 <p>
 
-${item.description || ""}
+Ready For Expansion
 
 </p>
 
@@ -1457,155 +1010,341 @@ ${item.description || ""}
 
 `;
 
-});
-
-return;
-
 }
 
-// ======================================
-// FALLBACK REPORTS
-// ======================================
+/* =====================================================
+   REFRESH ALL
+===================================================== */
 
-const fallback = [
+function refreshAll(){
 
-{
-date:"19-05-2026",
-text:"Replace Hardcoded Path Cleanup"
-},
+renderDashboard();
 
-{
-date:"21-05-2026",
-text:"RunPod Model Setup"
-},
-
-{
-date:"22-05-2026",
-text:"ComfyUI Windows Setup"
-},
-
-{
-date:"26-05-2026",
-text:"Remote Desktop Connectivity"
-},
-
-{
-date:"27-05-2026",
-text:"AnyDesk Transfer + ComfyUI"
-},
-
-{
-date:"28-05-2026",
-text:"Data Transfer"
-},
-
-{
-date:"01-06-2026",
-text:"Remote Desktop Setup Completed"
-},
-
-{
-date:"02-06-2026",
-text:"ComfyUI Setup Completed"
-},
-
-{
-date:"03-06-2026",
-text:"Voice Download + Transfer"
-},
-
-{
-date:"04-06-2026",
-text:"Filestash Verification"
-},
-
-{
-date:"05-06-2026",
-text:"CosyVoice 2 Setup"
-},
-
-{
-date:"08-06-2026",
-text:"Arabic Dialect Validation"
-},
-
-{
-date:"11-06-2026",
-text:"Timeline Editor Completed"
-},
-
-{
-date:"12-06-2026",
-text:"Undo / Redo / Autosave / Recovery"
-}
-
-];
-
-fallback.forEach(item=>{
-
-container.innerHTML += `
-
-<div class="report-card">
-
-<h3>
-
-${item.date}
-
-</h3>
-
-<p>
-
-${item.text}
-
-</p>
-
-</div>
-
-`;
-
-});
-
-}
-
-// ======================================
-// REPORT SUMMARY
-// ======================================
-
-function getReportsCount(){
-
-return {
-
-weekly:
-reports.length,
-
-daily:
-dailyReports.length
-
-};
-
-}
-
-// ======================================
-// REPORT REFRESH
-// ======================================
-
-function refreshReports(){
+renderTasks();
 
 renderWeeklyReports();
 
 renderDailyReports();
 
 }
-// ======================================
-// SUPABASE TABLE
-// ======================================
+/* =====================================================
+   HASABALLA AI PECS
+   APP.JS
+   PART 3 / 3
+   FILTERS + SUPABASE + STARTUP
+===================================================== */
 
-const SUPABASE_TABLE =
-"project_state";
+/* =====================================================
+   FILTERS
+===================================================== */
 
-// ======================================
-// SAVE TO SUPABASE
-// ======================================
+function populateFilters(){
+
+const phaseFilter =
+byId("phaseFilter");
+
+const milestoneFilter =
+byId("milestoneFilter");
+
+const developerFilter =
+byId("developerFilter");
+
+const taskTypeFilter =
+byId("taskTypeFilter");
+
+/* PHASES */
+
+if(phaseFilter){
+
+phaseFilter.innerHTML =
+'<option value="">كل المراحل</option>';
+
+const phaseList =
+phases.filter(
+p =>
+p.id &&
+p.id.startsWith("P")
+);
+
+phaseList.forEach(phase=>{
+
+phaseFilter.innerHTML +=
+`
+<option value="${phase.id}">
+${phase.id}
+</option>
+`;
+
+});
+
+}
+
+/* MILESTONES */
+
+if(milestoneFilter){
+
+milestoneFilter.innerHTML =
+'<option value="">كل الـ Milestones</option>';
+
+milestones.forEach(ms=>{
+
+milestoneFilter.innerHTML +=
+`
+<option value="${ms.id}">
+${ms.id}
+</option>
+`;
+
+});
+
+}
+
+/* DEVELOPERS */
+
+if(developerFilter){
+
+developerFilter.innerHTML =
+'<option value="">كل المطورين</option>';
+
+developers.forEach(dev=>{
+
+developerFilter.innerHTML +=
+`
+<option value="${dev.name}">
+${dev.name}
+</option>
+`;
+
+});
+
+}
+
+/* TASK TYPES */
+
+if(taskTypeFilter){
+
+taskTypeFilter.innerHTML =
+'<option value="">كل أنواع المهام</option>';
+
+const uniqueTypes =
+[
+...new Set(
+masterTasks.map(
+t => t.task_type
+)
+)
+];
+
+uniqueTypes.forEach(type=>{
+
+taskTypeFilter.innerHTML +=
+`
+<option value="${type}">
+${type}
+</option>
+`;
+
+});
+
+}
+
+}
+
+/* =====================================================
+   APPLY FILTERS
+===================================================== */
+
+function applyFilters(){
+
+const search =
+(
+byId("searchBox")
+?.value
+||
+""
+)
+.toLowerCase();
+
+const phase =
+byId("phaseFilter")
+?.value
+||
+"";
+
+const milestone =
+byId("milestoneFilter")
+?.value
+||
+"";
+
+const developer =
+byId("developerFilter")
+?.value
+||
+"";
+
+const taskType =
+byId("taskTypeFilter")
+?.value
+||
+"";
+
+document
+.querySelectorAll(
+"#tasksBody tr"
+)
+.forEach(row=>{
+
+let visible = true;
+
+const text =
+row.innerText
+.toLowerCase();
+
+/* SEARCH */
+
+if(
+search &&
+!text.includes(search)
+){
+
+visible = false;
+
+}
+
+/* PHASE */
+
+if(
+phase &&
+visible
+){
+
+if(
+!row.children[5]
+.innerText
+.includes(phase)
+){
+
+visible = false;
+
+}
+
+}
+
+/* MILESTONE */
+
+if(
+milestone &&
+visible
+){
+
+if(
+!row.children[6]
+.innerText
+.includes(
+milestone
+)
+){
+
+visible = false;
+
+}
+
+}
+
+/* DEVELOPER */
+
+if(
+developer &&
+visible
+){
+
+if(
+!row.children[8]
+.innerText
+.includes(
+developer
+)
+){
+
+visible = false;
+
+}
+
+}
+
+/* TYPE */
+
+if(
+taskType &&
+visible
+){
+
+if(
+!row.children[2]
+.innerText
+.includes(
+taskType
+)
+){
+
+visible = false;
+
+}
+
+}
+
+row.style.display =
+visible
+?
+""
+:
+"none";
+
+});
+
+}
+
+/* =====================================================
+   FILTER EVENTS
+===================================================== */
+
+function bindFilters(){
+
+[
+"searchBox",
+"phaseFilter",
+"milestoneFilter",
+"developerFilter",
+"taskTypeFilter"
+
+].forEach(id=>{
+
+const element =
+byId(id);
+
+if(!element)
+return;
+
+element.addEventListener(
+
+id==="searchBox"
+?
+"input"
+:
+"change",
+
+applyFilters
+
+);
+
+});
+
+}
+
+/* =====================================================
+   SUPABASE SAVE
+===================================================== */
 
 async function saveToSupabase(){
 
@@ -1615,11 +1354,11 @@ const payload = {
 
 id:1,
 
-subtasks,
-
 notesStore,
 
 developerStore,
+
+subtaskStore,
 
 updated_at:
 new Date()
@@ -1628,10 +1367,9 @@ new Date()
 };
 
 const {
-error
+error:saveError
 }
 =
-
 await supabase
 
 .from(
@@ -1642,9 +1380,9 @@ SUPABASE_TABLE
 payload
 );
 
-if(error){
+if(saveError){
 
-throw error;
+throw saveError;
 
 }
 
@@ -1664,21 +1402,19 @@ err
 
 }
 
-// ======================================
-// LOAD FROM SUPABASE
-// ======================================
+/* =====================================================
+   SUPABASE LOAD
+===================================================== */
 
 async function loadFromSupabase(){
 
 try{
 
 const {
-
 data,
 error:dbError
-
-# }
-
+}
+=
 await supabase
 
 .from(
@@ -1697,7 +1433,7 @@ SUPABASE_TABLE
 if(dbError){
 
 log(
-"No Remote State Found"
+"No Remote State"
 );
 
 return;
@@ -1707,26 +1443,20 @@ return;
 if(!data)
 return;
 
-if(data.subtasks){
-
-subtasks =
-data.subtasks;
-
-}
-
-if(data.notesStore){
-
 notesStore =
-data.notesStore;
-
-}
-
-if(data.developerStore){
+data.notesStore
+||
+{};
 
 developerStore =
-data.developerStore;
+data.developerStore
+||
+{};
 
-}
+subtaskStore =
+data.subtaskStore
+||
+{};
 
 log(
 "Supabase Loaded"
@@ -1744,13 +1474,13 @@ err
 
 }
 
-// ======================================
-// FORCE SAVE
-// ======================================
+/* =====================================================
+   FORCE SAVE
+===================================================== */
 
 async function forceSave(){
 
-saveLocalState();
+saveLocal();
 
 await saveToSupabase();
 
@@ -1760,9 +1490,9 @@ alert(
 
 }
 
-// ======================================
-// FORCE LOAD
-// ======================================
+/* =====================================================
+   FORCE LOAD
+===================================================== */
 
 async function forceLoad(){
 
@@ -1770,17 +1500,15 @@ await loadFromSupabase();
 
 refreshAll();
 
-restoreUI();
-
 alert(
 "Loaded Successfully"
 );
 
 }
 
-// ======================================
-// CTRL + S
-// ======================================
+/* =====================================================
+   CTRL + S
+===================================================== */
 
 window.addEventListener(
 "keydown",
@@ -1788,7 +1516,7 @@ async function(event){
 
 if(
 event.ctrlKey &&
-event.key === "s"
+event.key==="s"
 ){
 
 event.preventDefault();
@@ -1800,15 +1528,15 @@ await forceSave();
 }
 );
 
-// ======================================
-// AUTO SAVE
-// ======================================
+/* =====================================================
+   AUTO SAVE
+===================================================== */
 
 setInterval(
 
 async ()=>{
 
-saveLocalState();
+saveLocal();
 
 await saveToSupabase();
 
@@ -1818,32 +1546,18 @@ await saveToSupabase();
 
 );
 
-// ======================================
-// SAVE BEFORE EXIT
-// ======================================
-
-window.addEventListener(
-"beforeunload",
-function(){
-
-saveLocalState();
-
-}
-);
-
-// ======================================
-// CONNECTION TEST
-// ======================================
+/* =====================================================
+   TEST CONNECTION
+===================================================== */
 
 async function testSupabase(){
 
 try{
 
 const {
-error
+error:testError
 }
 =
-
 await supabase
 
 .from(
@@ -1854,7 +1568,7 @@ SUPABASE_TABLE
 
 .limit(1);
 
-if(error){
+if(testError){
 
 console.warn(
 "Supabase Not Ready"
@@ -1882,238 +1596,32 @@ return false;
 }
 
 }
-// ======================================
-// FILTERS ENGINE
-// ======================================
 
-function applyFilters(){
-
-const search =
-$("searchBox")?.value
-.toLowerCase()
-.trim() || "";
-
-const phase =
-$("phaseFilter")?.value || "";
-
-const milestone =
-$("milestoneFilter")?.value || "";
-
-const developer =
-$("developerFilter")?.value || "";
-
-const taskType =
-$("taskTypeFilter")?.value || "";
-
-document
-.querySelectorAll(
-"#tasksBody tr"
-)
-.forEach(row=>{
-
-const rowText =
-row.innerText
-.toLowerCase();
-
-let visible = true;
-
-// SEARCH
-
-if(
-search &&
-!rowText.includes(search)
-){
-
-visible = false;
-
-}
-
-// PHASE
-
-if(
-phase &&
-visible
-){
-
-const phaseCell =
-row.children[5];
-
-if(
-phaseCell &&
-!phaseCell.innerText.includes(
-phase
-)
-){
-
-visible = false;
-
-}
-
-}
-
-// MILESTONE
-
-if(
-milestone &&
-visible
-){
-
-const milestoneCell =
-row.children[6];
-
-if(
-milestoneCell &&
-!milestoneCell.innerText.includes(
-milestone
-)
-){
-
-visible = false;
-
-}
-
-}
-
-// DEVELOPER
-
-if(
-developer &&
-visible
-){
-
-const developerCell =
-row.children[8];
-
-if(
-developerCell &&
-!developerCell.innerText.includes(
-developer
-)
-){
-
-visible = false;
-
-}
-
-}
-
-// TASK TYPE
-
-if(
-taskType &&
-visible
-){
-
-const typeCell =
-row.children[2];
-
-if(
-typeCell &&
-!typeCell.innerText.includes(
-taskType
-)
-){
-
-visible = false;
-
-}
-
-}
-
-row.style.display =
-visible
-?
-""
-:
-"none";
-
-});
-
-}
-
-// ======================================
-// FILTER EVENTS
-// ======================================
-
-function bindFilters(){
-
-[
-"searchBox",
-"phaseFilter",
-"milestoneFilter",
-"developerFilter",
-"taskTypeFilter"
-]
-
-.forEach(id=>{
-
-const element =
-$(id);
-
-if(!element)
-return;
-
-element.addEventListener(
-
-id === "searchBox"
-?
-"input"
-:
-"change",
-
-applyFilters
-
-);
-
-});
-
-}
-
-// ======================================
-// STARTUP
-// ======================================
+/* =====================================================
+   STARTUP
+===================================================== */
 
 async function initializeSystem(){
 
 try{
 
 log(
-"Starting Hasaballa AI PECS..."
+"Starting PECS..."
 );
-
-// JSON
 
 await loadAllData();
 
-// LOCAL
-
-loadLocalState();
-
-// REMOTE
+loadLocal();
 
 await loadFromSupabase();
 
-// UI
+populateFilters();
 
-renderDashboard();
-
-renderTasks();
-
-renderWeeklyReports();
-
-renderDailyReports();
-
-restoreUI();
-
-refreshCounters();
+refreshAll();
 
 bindFilters();
 
-// TEST
-
 await testSupabase();
-
-appReady = true;
 
 log(
 "System Ready"
@@ -2123,7 +1631,7 @@ log(
 catch(err){
 
 error(
-"Startup Error",
+"Initialization Error",
 err
 );
 
@@ -2131,25 +1639,24 @@ err
 
 }
 
-// ======================================
-// DEBUG PANEL
-// ======================================
+/* =====================================================
+   DEBUG OBJECT
+===================================================== */
 
 window.hasaballa = {
 
 tasks,
 subtasks,
-masterTasks,
-mappings,
+reports,
+
 phases,
 milestones,
-reports,
-dailyReports,
+
+masterTasks,
+mappings,
 developers,
 
 refreshAll,
-renderTasks,
-renderDashboard,
 
 saveToSupabase,
 loadFromSupabase,
@@ -2159,33 +1666,22 @@ forceLoad
 
 };
 
-// ======================================
-// AUTO START
-// ======================================
+/* =====================================================
+   DOM READY
+===================================================== */
 
 document.addEventListener(
+
 "DOMContentLoaded",
+
 async ()=>{
 
 await initializeSystem();
 
-});
+}
 
-// ======================================
-// HEARTBEAT
-// ======================================
-
-setInterval(()=>{
-
-if(!appReady)
-return;
-
-console.log(
-"Hasaballa AI PECS Running"
 );
 
-},60000);
-
-// ======================================
-// END OF APP.JS
-// ======================================
+/* =====================================================
+   END OF FILE
+===================================================== */
