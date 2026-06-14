@@ -7,255 +7,1745 @@
 
 <title>Hasaballa AI PECS</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 
+:root{
+--bg:#f4f6f9;
+--card:#ffffff;
+--primary:#07152d;
+--accent:#16a34a;
+--warning:#facc15;
+--border:#d8dce3;
+--text:#111827;
+--shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
 body{
-    margin:0;
-    font-family:Arial;
-    background:#f5f5f5;
-}
-
-header{
-    background:#111827;
-    color:white;
-    padding:20px;
-}
-
-h1{
-    margin:0;
+background:var(--bg);
+color:var(--text);
 }
 
 .container{
-    padding:20px;
+width:98%;
+margin:auto;
+padding:15px;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:15px;
+.header{
+background:var(--primary);
+color:white;
+padding:18px;
+border-radius:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
 }
 
-.card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 2px 8px rgba(0,0,0,.1);
+.header h1{
+font-size:34px;
+font-weight:800;
 }
 
-.number{
-    font-size:32px;
-    font-weight:bold;
-    margin-top:10px;
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-bottom:25px;
 }
 
-.section{
-    margin-top:30px;
+.stat-card{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:var(--shadow);
+}
+
+.stat-title{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.stat-number{
+font-size:42px;
+font-weight:800;
+}
+
+.filters{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:var(--shadow);
+margin-bottom:20px;
+display:grid;
+grid-template-columns:
+2fr
+1fr
+1fr
+1fr
+1fr;
+gap:12px;
+}
+
+.filters input,
+.filters select{
+padding:12px;
+border:1px solid var(--border);
+border-radius:8px;
+font-size:15px;
+}
+
+.table-container{
+background:white;
+border-radius:12px;
+box-shadow:var(--shadow);
+overflow:auto;
 }
 
 table{
-    width:100%;
-    border-collapse:collapse;
-    background:white;
+width:100%;
+border-collapse:collapse;
+min-width:1700px;
 }
 
-th,td{
-    border:1px solid #ddd;
-    padding:10px;
-    text-align:right;
+thead{
+background:var(--primary);
+color:white;
 }
 
 th{
-    background:#111827;
-    color:white;
+padding:15px;
+border:1px solid #1c2847;
+font-size:16px;
 }
 
-.completed-row{
-    background:#d6d6d6;
-    box-shadow: inset 0 0 0 3px #ffd700;
+td{
+padding:12px;
+border:1px solid #e5e7eb;
+text-align:center;
+}
+
+.task-title{
+font-weight:700;
+}
+
+.task-type{
+font-weight:700;
+color:#2563eb;
+}
+
+.progress{
+width:100%;
+height:18px;
+background:#ddd;
+border-radius:30px;
+overflow:hidden;
 }
 
 .progress-bar{
-    width:120px;
-    height:12px;
-    background:#ddd;
-    border-radius:20px;
-    overflow:hidden;
+height:100%;
+background:#22c55e;
 }
 
-.progress-fill{
-    height:100%;
-    background:#22c55e;
+.completed-row{
+background:#ececec;
+border-top:3px solid #ffd700;
+border-bottom:3px solid #ffd700;
 }
 
-.task-check{
-    width:22px;
-    height:22px;
+.note-input{
+width:100%;
+padding:8px;
+border:1px solid #ccc;
+border-radius:6px;
 }
 
-.notes-box{
-    width:180px;
-}
-
-.dev-box{
-    width:120px;
+select.dev-select{
+width:100%;
+padding:8px;
 }
 
 .expand-btn{
-    cursor:pointer;
-    color:#2563eb;
-    font-weight:bold;
+cursor:pointer;
+font-weight:800;
+color:#2563eb;
 }
 
-.subtask-row{
-    background:#f8fafc;
+.sub-row{
+background:#f9fafb;
+display:none;
 }
-    
+
+.sub-row td{
+padding:20px;
+}
+
+.section-title{
+font-size:24px;
+font-weight:800;
+margin:25px 0 15px;
+}
+
+@media(max-width:1200px){
+
+.stats-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.filters{
+grid-template-columns:1fr;
+}
+
+}
+
 </style>
 </head>
 
-<body>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<header>
-    <h1>Hasaballa AI PECS</h1>
-</header>
+<script>
+const SUPABASE_URL =
+"https://oivtndqstklnsxwherpp.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_8F2wYjRCveireb8x-JOt0A_HyjnkAZB";
+
+const supabase = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+</script>
+<body>
 
 <div class="container">
 
-<div class="cards">
-
-<div class="card">
-<div>إجمالي المهام</div>
-<div class="number">0</div>
+<div class="header">
+<h1>Hasaballa AI PECS</h1>
+<div id="lastSync">
+Loading...
+</div>
 </div>
 
-<div class="card">
-<div>تم تنفيذها</div>
-<div class="number">0</div>
+<div class="stats-grid">
+
+<div class="stat-card">
+<div class="stat-title">إجمالي المهام</div>
+<div class="stat-number" id="totalTasks">0</div>
 </div>
 
-<div class="card">
-<div>قيد التنفيذ</div>
-<div class="number">0</div>
+<div class="stat-card">
+<div class="stat-title">تم تنفيذها</div>
+<div class="stat-number" id="completedTasks">0</div>
 </div>
 
-<div class="card">
-<div>المتبقي</div>
-<div class="number">0</div>
+<div class="stat-card">
+<div class="stat-title">قيد التنفيذ</div>
+<div class="stat-number" id="progressTasks">0</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-title">المتبقي</div>
+<div class="stat-number" id="remainingTasks">0</div>
 </div>
 
 </div>
 
-<div class="section">
+<div class="filters">
 
-<h2>قائمة المهام</h2>
+<input
+type="text"
+id="searchBox"
+placeholder="بحث..."
+>
+
+<select id="phaseFilter">
+<option value="">كل المراحل</option>
+</select>
+
+<select id="developerFilter">
+<option value="">كل المطورين</option>
+<option>Rini</option>
+<option>Dhruvi</option>
+<option>Charvina</option>
+<option>Parth</option>
+<option>Others</option>
+</select>
+
+<select id="statusFilter">
+<option value="">كل الحالات</option>
+<option>Completed</option>
+<option>In Progress</option>
+<option>Pending</option>
+<option>Not Started</option>
+</select>
+
+<select id="taskTypeFilter">
+<option value="">كل الأنواع</option>
+</select>
+
+</div>
+
+<div class="table-container">
 
 <table>
 
 <thead>
 <tr>
+
 <th>✓</th>
+
 <th>المهمة</th>
+
+<th>نوع المهمة</th>
+
 <th>المرحلة</th>
+
 <th>الأسبوع</th>
+
 <th>المطور</th>
+
 <th>الحالة</th>
+
 <th>نسبة الإنجاز</th>
+
 <th>ملاحظات</th>
+
 </tr>
 </thead>
 
-<tbody id="tasksTable">
+<tbody id="tasksTableBody">
+
 </tbody>
 
 </table>
 
 </div>
 
+<div class="section-title">
+Weekly Reports
+</div>
+
+<div id="weeklyReports"></div>
+
+<div class="section-title">
+Daily Reports
+</div>
+
+<div id="dailyReports"></div>
+
 </div>
 
 <script>
 
-async function loadTasks(){
 
-    const response = await fetch('data/tasks.json');
-    const tasks = await response.json();
 
-    const table = document.getElementById('tasksTable');
+let tasks=[];
+let subtasks=[];
+let masterTasks=[];
+let mappings=[];
+let reports=[];
+let dailyReports=[];
+let developers=[];
+let phases=[];
+let milestones=[];
 
-    table.innerHTML = '';
+// =========================
+// PART 2 START
+// LOAD ALL JSON FILES
+// =========================
 
-    let total = tasks.length;
-    let completed = 0;
-    let inProgress = 0;
+async function loadAllData(){
 
-    tasks.forEach(task => {
+try{
 
-        if(task.status === "Completed"){
-            completed++;
-        }
+const [
+tasksRes,
+subtasksRes,
+masterRes,
+mappingRes,
+reportsRes,
+dailyRes,
+developersRes,
+phasesRes,
+milestonesRes
 
-        if(task.status === "In Progress"){
-            inProgress++;
-        }
+] = await Promise.all([
 
-    table.innerHTML += `
-<tr class="${task.progress == 100 ? 'completed-row' : ''}">
-    <td>
-        <input type="checkbox"
-        class="task-check"
-        ${task.progress == 100 ? 'checked' : ''}>
-    </td>
+fetch('./data/tasks.json'),
+fetch('./data/subtasks.json'),
+fetch('./data/master_tasks.json'),
+fetch('./data/mappings.json'),
+fetch('./data/reports.json'),
+fetch('./data/daily_reports.json'),
+fetch('./data/developers.json'),
+fetch('./data/phases.json'),
+fetch('./data/milestones.json')
 
-    <td>
-        <span class="expand-btn">+</span>
-        ${task.title}
-    </td>
+]);
 
-    <td>${task.phase}</td>
+tasks = await tasksRes.json();
+subtasks = await subtasksRes.json();
+masterTasks = await masterRes.json();
+mappings = await mappingRes.json();
+reports = await reportsRes.json();
+dailyReports = await dailyRes.json();
+developers = await developersRes.json();
+phases = await phasesRes.json();
+milestones = await milestonesRes.json();
 
-    <td>${task.week}</td>
+populateFilters();
 
-    <td>
-        <input
-        class="dev-box"
-        value="${task.developer}">
-    </td>
+renderDashboard();
 
-    <td>${task.status}</td>
+renderTasks();
 
-    <td>
+renderWeeklyReports();
 
-        <div class="progress-bar">
-            <div
-            class="progress-fill"
-            style="width:${task.progress}%">
-            </div>
-        </div>
+renderDailyReports();
 
-        ${task.progress}%
+updateLastSync();
 
-    </td>
+}
+catch(error){
 
-    <td>
-        <input
-        class="notes-box"
-        placeholder="ملاحظات">
-    </td>
+console.error(error);
 
-</tr>
-`;
-    });
-
-    document.querySelectorAll('.number')[0].innerText = total;
-    document.querySelectorAll('.number')[1].innerText = completed;
-    document.querySelectorAll('.number')[2].innerText = inProgress;
-    document.querySelectorAll('.number')[3].innerText = total - completed;
+alert(
+'Error Loading JSON Files'
+);
 
 }
 
-loadTasks();
+}
 
-</script>
+function updateLastSync(){
+
+const now = new Date();
+
+document.getElementById('lastSync').innerHTML =
+'آخر تحديث : ' +
+now.toLocaleString('ar-EG');
+
+}
+
+// =========================
+// FILTERS
+// =========================
+
+function populateFilters(){
+
+const phaseFilter =
+document.getElementById('phaseFilter');
+
+const taskTypeFilter =
+document.getElementById('taskTypeFilter');
+
+const phaseSet = new Set();
+
+const typeSet = new Set();
+
+tasks.forEach(task=>{
+
+if(task.phase){
+
+phaseSet.add(task.phase);
+
+}
+
+if(task.task_type){
+
+typeSet.add(task.task_type);
+
+}
+
+});
+
+[...phaseSet].forEach(phase=>{
+
+phaseFilter.innerHTML +=
+`<option value="${phase}">
+${phase}
+</option>`;
+
+});
+
+[...typeSet].forEach(type=>{
+
+taskTypeFilter.innerHTML +=
+`<option value="${type}">
+${type}
+</option>`;
+
+});
+
+}
+
+// =========================
+// DASHBOARD
+// =========================
+
+function renderDashboard(){
+
+const total = tasks.length;
+
+const completed =
+tasks.filter(
+t =>
+t.progress == 100 ||
+t.status === 'Completed'
+).length;
+
+const progress =
+tasks.filter(
+t =>
+t.status === 'In Progress'
+).length;
+
+const remaining =
+total - completed;
+
+document.getElementById(
+'totalTasks'
+).innerText = total;
+
+document.getElementById(
+'completedTasks'
+).innerText = completed;
+
+document.getElementById(
+'progressTasks'
+).innerText = progress;
+
+document.getElementById(
+'remainingTasks'
+).innerText = remaining;
+
+}
+
+// =========================
+// TASK TABLE
+// =========================
+
+function renderTasks(){
+
+const tbody =
+document.getElementById(
+'tasksTableBody'
+);
+
+tbody.innerHTML='';
+
+tasks.forEach(task=>{
+
+const row = document.createElement('tr');
+
+if(task.progress == 100){
+
+row.classList.add(
+'completed-row'
+);
+
+}
+
+row.innerHTML = `
+
+<td>
+
+<input
+type="checkbox"
+class="task-checkbox"
+data-id="${task.id}"
+${task.progress == 100 ? 'checked' : ''}
+>
+
+</td>
+
+<td class="task-title">
+
+<span
+class="expand-btn"
+onclick="toggleSubtasks('${task.id}')"
+>
++
+</span>
+
+${task.title || '-'}
+
+</td>
+
+<td>
+
+<span class="task-type">
+
+${task.task_type || '-'}
+
+</span>
+
+</td>
+
+<td>
+
+${task.phase || '-'}
+
+</td>
+
+<td>
+
+${task.week || '-'}
+
+</td>
+
+<td>
+
+<select
+class="dev-select"
+data-id="${task.id}"
+>
+
+<option value="Rini" ${task.developer==="Rini"?"selected":""}>Rini</option>
+
+<option value="Dhruvi" ${task.developer==="Dhruvi"?"selected":""}>Dhruvi</option>
+
+<option value="Charvina" ${task.developer==="Charvina"?"selected":""}>Charvina</option>
+
+<option value="Parth" ${task.developer==="Parth"?"selected":""}>Parth</option>
+
+<option value="Others" ${task.developer==="Others"?"selected":""}>Others</option>
+
+</select>
+
+<option>
+Rini
+</option>
+
+<option>
+Dhruvi
+</option>
+
+<option>
+Charvina
+</option>
+
+<option>
+Parth
+</option>
+
+<option>
+Others
+</option>
+
+</select>
+
+</td>
+
+<td>
+
+${task.status || '-'}
+
+</td>
+
+<td>
+
+<div class="progress">
+
+<div
+class="progress-bar"
+style="width:${task.progress || 0}%">
+</div>
+
+</div>
+
+${task.progress || 0}%
+
+</td>
+
+<td>
+
+<input
+class="note-input"
+data-id="${task.id}"
+value="${task.notes || ''}"
+>
+
+</td>
+
+`;
+
+tbody.appendChild(row);
+
+const subRow =
+document.createElement('tr');
+
+subRow.className =
+'sub-row';
+
+subRow.id =
+'sub-' + task.id;
+
+subRow.innerHTML =
+
+`
+<td colspan="9">
+
+<div id="subtasks-${task.id}">
+
+Loading...
+
+</div>
+
+</td>
+`;
+
+tbody.appendChild(subRow);
+
+});
+
+attachCheckboxEvents();
+
+}
+
+// =========================
+// PART 2 END
+// =========================
     
+// =========================
+// PART 3 START
+// SUBTASKS + AUTO PROGRESS
+// =========================
+
+function toggleSubtasks(taskId){
+
+const row =
+document.getElementById(
+'sub-' + taskId
+);
+
+const container =
+document.getElementById(
+'subtasks-' + taskId
+);
+
+if(
+row.style.display === 'table-row'
+){
+
+row.style.display = 'none';
+
+return;
+
+}
+
+const relatedSubtasks =
+subtasks.filter(st => {
+
+return (
+st.parent_task === taskId ||
+st.parent_task === taskId.replace('DEV','T')
+);
+
+});
+
+let html = '';
+
+if(
+relatedSubtasks.length === 0
+){
+
+html =
+`
+<div>
+
+لا توجد مهام فرعية مرتبطة
+
+</div>
+`;
+
+}
+else{
+
+html += `
+
+<table
+style="
+width:100%;
+margin-top:10px;
+background:white;
+"
+>
+
+<thead>
+
+<tr>
+
+<th>✓</th>
+
+<th>Sub Task</th>
+
+<th>Task Type</th>
+
+<th>Phase</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+`;
+
+relatedSubtasks.forEach(st=>{
+
+html += `
+
+<tr>
+
+<td>
+
+<input
+type="checkbox"
+class="subtask-checkbox"
+data-id="${st.id}"
+${st.status === 'Completed'
+? 'checked'
+: ''
+}
+>
+
+</td>
+
+<td>
+
+${st.title}
+
+</td>
+
+<td>
+
+${st.task_type || '-'}
+
+</td>
+
+<td>
+
+${st.phase || '-'}
+
+</td>
+
+<td>
+
+${st.status || '-'}
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+html += `
+
+</tbody>
+</table>
+
+`;
+
+}
+
+container.innerHTML = html;
+
+row.style.display = 'table-row';
+
+attachSubtaskEvents();
+
+}
+
+// =========================
+// SUBTASK EVENTS
+// =========================
+
+function attachSubtaskEvents(){
+
+document
+.querySelectorAll(
+'.subtask-checkbox'
+)
+.forEach(box=>{
+
+box.addEventListener(
+'change',
+function(){
+
+const id =
+this.dataset.id;
+
+const subtask =
+subtasks.find(
+s => s.id === id
+);
+
+if(!subtask)
+return;
+
+if(this.checked){
+
+subtask.status =
+'Completed';
+
+}
+else{
+
+const confirmRemove =
+confirm(
+'هل أنت متأكد من إزالة الإنجاز؟'
+);
+
+if(!confirmRemove){
+
+this.checked = true;
+
+return;
+
+}
+
+subtask.status =
+'Not Started';
+
+}
+
+updateParentProgress();
+
+}
+
+);
+
+});
+
+}
+
+// =========================
+// PARENT PROGRESS
+// =========================
+
+function updateParentProgress(){
+
+tasks.forEach(task=>{
+
+const related =
+subtasks.filter(st=>{
+
+return (
+st.parent_task === task.id
+);
+
+});
+
+if(
+related.length === 0
+){
+
+return;
+
+}
+
+const completed =
+related.filter(st=>{
+
+return st.status === 'Completed';
+
+}).length;
+
+const percent =
+Math.round(
+(
+completed /
+related.length
+) * 100
+);
+
+task.progress =
+percent;
+
+if(percent === 100){
+
+task.status =
+'Completed';
+
+}
+else if(percent > 0){
+
+task.status =
+'In Progress';
+
+}
+else{
+
+task.status =
+'Not Started';
+
+}
+
+});
+
+renderDashboard();
+
+renderTasks();
+
+}
+
+// =========================
+// MAIN CHECKBOX
+// =========================
+
+function attachCheckboxEvents(){
+
+document
+.querySelectorAll(
+'.task-checkbox'
+)
+.forEach(box=>{
+
+box.addEventListener(
+'change',
+function(){
+
+const id =
+this.dataset.id;
+
+const task =
+tasks.find(
+t => t.id == id
+);
+
+if(!task)
+return;
+
+if(this.checked){
+
+task.progress = 100;
+
+task.status =
+'Completed';
+
+}
+else{
+
+const answer =
+confirm(
+'هل أنت متأكد من إلغاء الإنجاز؟'
+);
+
+if(!answer){
+
+this.checked = true;
+
+return;
+
+}
+
+task.progress = 0;
+
+task.status =
+'Not Started';
+
+}
+
+renderDashboard();
+
+renderTasks();
+
+}
+
+);
+
+});
+
+}
+
+// =========================
+// PART 3 END
+// =========================
+
+// =========================
+// PART 4 START
+// REPORTS + FILTERS + SEARCH
+// =========================
+
+function renderWeeklyReports(){
+
+const container =
+document.getElementById(
+'weeklyReports'
+);
+
+if(!container) return;
+
+let html = '';
+
+reports.forEach(report=>{
+
+html += `
+
+<div
+style="
+background:white;
+padding:15px;
+margin-bottom:12px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+">
+
+<h3>
+
+${report.week || '-'}
+
+</h3>
+
+<div>
+
+${report.period || ''}
+
+</div>
+
+<div>
+
+${report.summary || ''}
+
+</div>
+
+<div>
+
+Status:
+<b>
+
+${report.status || '-'}
+
+</b>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+container.innerHTML = html;
+
+}
+
+// =========================
+// DAILY REPORTS
+// =========================
+
+function renderDailyReports(){
+
+const container =
+document.getElementById(
+'dailyReports'
+);
+
+if(!container) return;
+
+let html = '';
+
+dailyReports.forEach(report=>{
+
+html += `
+
+<div
+style="
+background:white;
+padding:15px;
+margin-bottom:10px;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+">
+
+<h4>
+
+${report.date || '-'}
+
+</h4>
+
+<div>
+
+${report.developer || '-'}
+
+</div>
+
+<div>
+
+${report.summary || '-'}
+
+</div>
+
+</div>
+
+`;
+
+});
+
+container.innerHTML = html;
+
+}
+
+// =========================
+// SEARCH
+// =========================
+
+document
+.getElementById(
+'searchBox'
+)
+.addEventListener(
+'input',
+applyFilters
+);
+
+// =========================
+// FILTER EVENTS
+// =========================
+
+document
+.getElementById(
+'phaseFilter'
+)
+.addEventListener(
+'change',
+applyFilters
+);
+
+document
+.getElementById(
+'developerFilter'
+)
+.addEventListener(
+'change',
+applyFilters
+);
+
+document
+.getElementById(
+'statusFilter'
+)
+.addEventListener(
+'change',
+applyFilters
+);
+
+document
+.getElementById(
+'taskTypeFilter'
+)
+.addEventListener(
+'change',
+applyFilters
+);
+
+// =========================
+// FILTER LOGIC
+// =========================
+
+function applyFilters(){
+
+const search =
+document
+.getElementById(
+'searchBox'
+)
+.value
+.toLowerCase();
+
+const phase =
+document
+.getElementById(
+'phaseFilter'
+)
+.value;
+
+const developer =
+document
+.getElementById(
+'developerFilter'
+)
+.value;
+
+const status =
+document
+.getElementById(
+'statusFilter'
+)
+.value;
+
+const taskType =
+document
+.getElementById(
+'taskTypeFilter'
+)
+.value;
+
+const rows =
+document.querySelectorAll(
+'#tasksTableBody tr'
+);
+
+rows.forEach(row=>{
+
+if(
+row.classList.contains(
+'sub-row'
+)
+)
+return;
+
+const text =
+row.innerText
+.toLowerCase();
+
+let visible = true;
+
+if(
+search &&
+!text.includes(search)
+){
+
+visible = false;
+
+}
+
+if(
+phase &&
+!text.includes(
+phase.toLowerCase()
+)
+){
+
+visible = false;
+
+}
+
+if(
+developer &&
+!text.includes(
+developer.toLowerCase()
+)
+){
+
+visible = false;
+
+}
+
+if(
+status &&
+!text.includes(
+status.toLowerCase()
+)
+){
+
+visible = false;
+
+}
+
+if(
+taskType &&
+!text.includes(
+taskType.toLowerCase()
+)
+){
+
+visible = false;
+
+}
+
+row.style.display =
+visible
+? ''
+: 'none';
+
+});
+
+}
+
+// =========================
+// TASK COUNTERS REFRESH
+// =========================
+
+function refreshCounters(){
+
+const visibleRows =
+[
+...document.querySelectorAll(
+'#tasksTableBody tr'
+)
+]
+.filter(r=>{
+
+return !r.classList.contains(
+'sub-row'
+);
+
+});
+
+let completed = 0;
+let progress = 0;
+
+visibleRows.forEach(row=>{
+
+const text =
+row.innerText;
+
+if(
+text.includes(
+'Completed'
+)
+){
+
+completed++;
+
+}
+
+if(
+text.includes(
+'In Progress'
+)
+){
+
+progress++;
+
+}
+
+});
+
+document
+.getElementById(
+'completedTasks'
+)
+.innerText =
+completed;
+
+document
+.getElementById(
+'progressTasks'
+)
+.innerText =
+progress;
+
+}
+
+// =========================
+// PART 4 END
+// =========================
+ 
+// =========================
+// PART 5 START
+// LOCAL SAVE + SUPABASE READY
+// =========================
+
+// ملاحظة:
+// لو لم تضع بيانات Supabase بعد
+// سيعمل النظام على LocalStorage تلقائياً
+
+const STORAGE_KEY =
+'hasaballa_ai_pecs_state';
+
+// =========================
+// SAVE STATE
+// =========================
+
+function saveState(){
+
+const data = {
+
+tasks,
+subtasks
+
+};
+
+localStorage.setItem(
+STORAGE_KEY,
+JSON.stringify(data)
+);
+
+}
+
+// =========================
+// LOAD STATE
+// =========================
+
+function loadState(){
+
+const saved =
+localStorage.getItem(
+STORAGE_KEY
+);
+
+if(!saved)
+return;
+
+try{
+
+const data =
+JSON.parse(saved);
+
+if(data.tasks){
+
+tasks = data.tasks;
+
+}
+
+if(data.subtasks){
+
+subtasks = data.subtasks;
+
+}
+
+}
+catch(err){
+
+console.error(err);
+
+}
+
+}
+
+// =========================
+// NOTES SAVE
+// =========================
+
+document.addEventListener(
+'input',
+function(e){
+
+if(
+e.target.classList.contains(
+'note-input'
+)
+){
+
+const id =
+e.target.dataset.id;
+
+const task =
+tasks.find(
+t=>t.id==id
+);
+
+if(task){
+
+task.notes =
+e.target.value;
+
+saveState();
+
+}
+
+}
+
+}
+);
+
+// =========================
+// DEVELOPER SAVE
+// =========================
+
+document.addEventListener(
+'change',
+function(e){
+
+if(
+e.target.classList.contains(
+'dev-select'
+)
+){
+
+const id =
+e.target.dataset.id;
+
+const task =
+tasks.find(
+t=>t.id==id
+);
+
+if(task){
+
+task.developer =
+e.target.value;
+
+saveState();
+
+}
+
+}
+
+}
+);
+
+// =========================
+// OVERRIDE PROGRESS SAVE
+// =========================
+
+const originalUpdate =
+updateParentProgress;
+
+updateParentProgress =
+function(){
+
+originalUpdate();
+
+saveState();
+
+};
+
+// =========================
+// OVERRIDE CHECKBOX SAVE
+// =========================
+
+const originalAttach =
+attachCheckboxEvents;
+
+attachCheckboxEvents =
+function(){
+
+originalAttach();
+
+document
+.querySelectorAll(
+'.task-checkbox'
+)
+.forEach(box=>{
+
+box.addEventListener(
+'change',
+saveState
+);
+
+});
+
+};
+
+// =========================
+// SUPABASE
+// =========================
+
+async function saveToSupabase(){
+
+if(
+!SUPABASE_URL ||
+!SUPABASE_KEY
+){
+
+return;
+
+}
+
+try{
+
+await fetch(
+
+SUPABASE_URL +
+'/rest/v1/project_state',
+
+{
+
+method:'POST',
+
+headers:{
+
+'apikey':
+SUPABASE_KEY,
+
+'Authorization':
+'Bearer ' +
+SUPABASE_KEY,
+
+'Content-Type':
+'application/json'
+
+},
+
+body:JSON.stringify({
+
+tasks,
+subtasks,
+updated_at:
+new Date()
+.toISOString()
+
+})
+
+}
+
+);
+
+}
+catch(error){
+
+console.error(
+'Supabase Save Error',
+error
+);
+
+}
+
+}
+
+// =========================
+// AUTO SAVE
+// =========================
+
+setInterval(()=>{
+
+saveState();
+
+saveToSupabase();
+
+},10000);
+
+// =========================
+// AUTO REFRESH DASHBOARD
+// =========================
+
+setInterval(()=>{
+
+renderDashboard();
+
+},5000);
+
+// =========================
+// START APP
+// =========================
+
+(async ()=>{
+
+await loadAllData();
+
+loadState();
+
+renderDashboard();
+
+renderTasks();
+
+renderWeeklyReports();
+
+renderDailyReports();
+
+})();
+
+// =========================
+// PART 5 END
+// =========================
+ </script>
 </body>
 </html>
