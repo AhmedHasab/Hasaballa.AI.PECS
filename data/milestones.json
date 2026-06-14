@@ -1,1 +1,100 @@
+[
+  {
+    "id": "M1",
+    "title": "Security Clean Windows Ready Codebase",
+    "week": 1,
+    "phase": "P1",
+    "deliverables": [
+      "Security cleanup",
+      "Credential removal",
+      "Windows-ready codebase",
+      "ComfyUI validation",
+      "Configuration standardization"
+    ],
+    "completion_required": 100
+  },
 
+  {
+    "id": "M2",
+    "title": "Core AI Engine Complete",
+    "week": 5,
+    "phase": "P2",
+    "deliverables": [
+      "CosyVoice2",
+      "Qwen2.5-72B",
+      "Arabic wav2vec2",
+      "Lip Sync 4 Modes",
+      "Real-ESRGAN 4K",
+      "Arabic Background Validation",
+      "RTX5090 Optimization"
+    ],
+    "completion_required": 100
+  },
+
+  {
+    "id": "M3",
+    "title": "Arabic Voice Pipeline Complete",
+    "week": 8,
+    "phase": "P3",
+    "deliverables": [
+      "RTL Validation",
+      "21 Arabic Dialects",
+      "Neural Emotion System",
+      "Demucs",
+      "Whisper STT",
+      "Offline Sound Library"
+    ],
+    "completion_required": 100
+  },
+
+  {
+    "id": "M4",
+    "title": "Video Identity Pipeline Complete",
+    "week": 11,
+    "phase": "P4",
+    "deliverables": [
+      "WAN 2.2",
+      "HunyuanVideo",
+      "SkyReels",
+      "PuLID FLUX",
+      "SDXL",
+      "InstantID",
+      "LoRA System",
+      "Identity Validation"
+    ],
+    "completion_required": 100
+  },
+
+  {
+    "id": "M5",
+    "title": "Timeline Editor Complete",
+    "week": 15,
+    "phase": "P5",
+    "deliverables": [
+      "Timeline Editor",
+      "Multi Track Editing",
+      "Chrome Key Compositing",
+      "Smart Edit Layer",
+      "Timeline QA",
+      "Render Pipeline Integration"
+    ],
+    "completion_required": 100
+  },
+
+  {
+    "id": "DELIVERY",
+    "title": "Final Delivery",
+    "week": 18,
+    "phase": "P6",
+    "deliverables": [
+      "Full System Integration",
+      "Cross Module Validation",
+      "Performance Benchmark",
+      "Packaging",
+      "Documentation",
+      "Final QA",
+      "Final Delivery"
+    ],
+    "completion_required": 100
+  }
+]
