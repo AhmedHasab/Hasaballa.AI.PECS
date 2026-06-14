@@ -802,14 +802,11 @@ progress
 </td>
 
 <td>
-
    ${renderDeveloperTasks(master.id)}
 </td>
 
-${renderSubtasks(
-master.id
-)}
-
+<td>
+   ${renderSubtasks(master.id)}
 </td>
 
 <td>
