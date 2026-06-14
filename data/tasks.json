@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "id": "DEV-001",
+    "title": "Timeline Editor",
+    "phase": "Phase 5",
+    "week": "12-15",
+    "developer": "",
+    "status": "Pending",
+    "progress": 0
+  },
+  {
+    "id": "DEV-002",
+    "title": "CosyVoice 2",
+    "phase": "Phase 2",
+    "week": "2",
+    "developer": "",
+    "status": "Pending",
+    "progress": 0
+  },
+  {
+    "id": "DEV-003",
+    "title": "Qwen2.5-72B",
+    "phase": "Phase 2",
+    "week": "3",
+    "developer": "",
+    "status": "Pending",
+    "progress": 0
+  }
+]
