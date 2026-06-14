@@ -1,18 +1,41 @@
 [
   {
-    "name":"Charvina",
-    "role":"Frontend + Timeline Editor"
-  },
-  {
-    "name":"Dhruvi",
-    "role":"Voice Systems"
-  },
-  {
+    "id":"DEV-001",
     "name":"Rini",
-    "role":"AI Lead"
+    "role":"AI Technical Lead",
+    "status":"Active",
+    "color":"#8b5cf6"
   },
+
   {
+    "id":"DEV-002",
+    "name":"Dhruvi",
+    "role":"Frontend Developer",
+    "status":"Active",
+    "color":"#06b6d4"
+  },
+
+  {
+    "id":"DEV-003",
+    "name":"Charvina",
+    "role":"Project Coordinator",
+    "status":"Active",
+    "color":"#10b981"
+  },
+
+  {
+    "id":"DEV-004",
     "name":"Parth",
-    "role":"AI Lead"
-  } 
+    "role":"Backend Developer",
+    "status":"Active",
+    "color":"#f59e0b"
+  },
+
+  {
+    "id":"DEV-005",
+    "name":"Others",
+    "role":"External Contributors",
+    "status":"Active",
+    "color":"#ef4444"
+  }
 ]
