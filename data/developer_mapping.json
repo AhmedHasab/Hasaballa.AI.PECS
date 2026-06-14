@@ -1,0 +1,143 @@
+{
+  "CosyVoice2": [
+    "Reference Voice System",
+    "Arabic Dialect Detection"
+  ],
+
+  "Habibi OmniVoice": [
+    "Reference Voice System",
+    "Arabic Dialect Detection"
+  ],
+
+  "Whisper Large V3": [
+    "Speaker Detection Engine",
+    "Narration Mode Detection"
+  ],
+
+  "Qwen2.5-72B": [
+    "Scene Parsing Engine",
+    "Speaker Detection Engine",
+    "Full Script Parsing",
+    "Deterministic Planning",
+    "Automatic Generation Button",
+    "Manual Generation Button"
+  ],
+
+  "LatentSync Integration": [
+    "Narration Mode Detection",
+    "Dialogue Mode Detection",
+    "Mixed Mode Detection"
+  ],
+
+  "PuLID FLUX": [
+    "Character Pack Management"
+  ],
+
+  "FLUX 2 Dev FP8": [
+    "Character Pack Management"
+  ],
+
+  "InstantID": [
+    "Insert Reference Images",
+    "Character Pack Management"
+  ],
+
+  "SDXL": [
+    "Insert Reference Images"
+  ],
+
+  "WAN 2.2 I2V": [
+    "Character Animation"
+  ],
+
+  "HunyuanVideo": [
+    "Character Animation"
+  ],
+
+  "SkyReels": [
+    "Character Animation"
+  ],
+
+  "Timeline Editor Core": [
+    "Task Timeline Tracker"
+  ],
+
+  "Multi Track Editing": [
+    "Task Timeline Tracker"
+  ],
+
+  "Clip Trimming": [
+    "Task Timeline Tracker"
+  ],
+
+  "Drag And Drop": [
+    "Task Timeline Tracker"
+  ],
+
+  "Playhead Scrubbing": [
+    "Task Timeline Tracker"
+  ],
+
+  "Undo Redo": [
+    "Task Timeline Tracker"
+  ],
+
+  "Timeline QA": [
+    "Task Timeline Tracker"
+  ],
+
+  "Data Transfer": [
+    "Offline Operation Validation"
+  ],
+
+  "Model Transfer": [
+    "Insert Reference Images",
+    "Reference Voice System",
+    "Character Pack Management"
+  ],
+
+  "RunPod Migration": [
+    "Offline Operation Validation"
+  ],
+
+  "Filestash Verification": [
+    "Offline Operation Validation"
+  ],
+
+  "Codebase Verification": [
+    "Offline Operation Validation",
+    "Retry And Failure Handling"
+  ],
+
+  "Dependency Installation": [
+    "Offline Operation Validation"
+  ],
+
+  "Remote Desktop Setup": [
+    "Offline Operation Validation"
+  ],
+
+  "Tailscale Setup": [
+    "Offline Operation Validation"
+  ],
+
+  "ComfyUI Setup": [
+    "Insert Reference Images"
+  ],
+
+  "Image Collection": [
+    "Insert Reference Images"
+  ],
+
+  "Image Animation Support": [
+    "Character Animation"
+  ],
+
+  "Autosave Recovery": [
+    "Auto Save And Resume System"
+  ],
+
+  "Storage Verification Complete": [
+    "Offline Operation Validation"
+  ]
+}
