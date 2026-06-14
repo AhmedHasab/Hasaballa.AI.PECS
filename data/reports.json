@@ -1,1 +1,172 @@
-[]
+[
+  {
+    "date":"2026-05-22",
+    "developer":"Dhruvi",
+    "task":"DEV-SETUP-001",
+    "status":"Completed",
+    "progress":100,
+    "note":"Security credential removal"
+  },
+
+  {
+    "date":"2026-05-22",
+    "developer":"Dhruvi",
+    "task":"DEV-SETUP-002",
+    "status":"Completed",
+    "progress":100,
+    "note":"Parallel model download setup"
+  },
+
+  {
+    "date":"2026-05-22",
+    "developer":"Charvina",
+    "task":"DEV-SETUP-003",
+    "status":"Completed",
+    "progress":100,
+    "note":"Hardcoded path cleanup"
+  },
+
+  {
+    "date":"2026-05-22",
+    "developer":"Dhruvi",
+    "task":"DEV-COMFYUI-001",
+    "status":"In Progress",
+    "progress":50,
+    "note":"ComfyUI Windows setup"
+  },
+
+  {
+    "date":"2026-05-29",
+    "developer":"Dhruvi",
+    "task":"DEV-RDP-001",
+    "status":"Completed",
+    "progress":100,
+    "note":"Remote desktop setup"
+  },
+
+  {
+    "date":"2026-05-29",
+    "developer":"Dhruvi",
+    "task":"DEV-MODELS-001",
+    "status":"Completed",
+    "progress":100,
+    "note":"Remaining model downloads"
+  },
+
+  {
+    "date":"2026-05-29",
+    "developer":"Dhruvi",
+    "task":"DEV-TTS-001",
+    "status":"In Progress",
+    "progress":20,
+    "note":"Arabic TTS preparation"
+  },
+
+  {
+    "date":"2026-06-05",
+    "developer":"Dhruvi",
+    "task":"DEV-BASIC-001",
+    "status":"Completed",
+    "progress":100,
+    "note":"VSCode Python dependency setup"
+  },
+
+  {
+    "date":"2026-06-05",
+    "developer":"Dhruvi",
+    "task":"DEV-DATA-001",
+    "status":"Completed",
+    "progress":100,
+    "note":"Data transfer and verification"
+  },
+
+  {
+    "date":"2026-06-05",
+    "developer":"Charvina",
+    "task":"DEV-001",
+    "status":"In Progress",
+    "progress":40,
+    "note":"Timeline editor first implementation"
+  },
+
+  {
+    "date":"2026-06-05",
+    "developer":"Charvina",
+    "task":"DEV-WHISPER-001",
+    "status":"Completed",
+    "progress":100,
+    "note":"Initial dialect validation"
+  },
+
+  {
+    "date":"2026-06-05",
+    "developer":"Dhruvi",
+    "task":"DEV-002",
+    "status":"In Progress",
+    "progress":35,
+    "note":"CosyVoice 2 setup"
+  },
+
+  {
+    "date":"2026-06-12",
+    "developer":"Charvina",
+    "task":"DEV-001",
+    "status":"In Progress",
+    "progress":75,
+    "note":"Timeline editor advanced features"
+  },
+
+  {
+    "date":"2026-06-12",
+    "developer":"Parth",
+    "task":"DEV-RTL-001",
+    "status":"Completed",
+    "progress":100,
+    "note":"RTL UI audit"
+  },
+
+  {
+    "date":"2026-06-12",
+    "developer":"Parth",
+    "task":"DEV-CONFIG-001",
+    "status":"Completed",
+    "progress":100,
+    "note":"Critical configuration fixes"
+  },
+
+  {
+    "date":"2026-06-12",
+    "developer":"Parth",
+    "task":"DEV-TTS-002",
+    "status":"In Progress",
+    "progress":60,
+    "note":"Habibi OmniVoice setup"
+  },
+
+  {
+    "date":"2026-06-12",
+    "developer":"Dhruvi",
+    "task":"DEV-DATA-002",
+    "status":"Completed",
+    "progress":100,
+    "note":"Filestash verification"
+  },
+
+  {
+    "date":"2026-06-12",
+    "developer":"Charvina",
+    "task":"DEV-WHISPER-002",
+    "status":"Completed",
+    "progress":100,
+    "note":"Extended dialect validation"
+  },
+
+  {
+    "date":"2026-06-12",
+    "developer":"Dhruvi",
+    "task":"DEV-002",
+    "status":"In Progress",
+    "progress":60,
+    "note":"CosyVoice 2 continued"
+  }
+]
