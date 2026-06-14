@@ -1,1 +1,112 @@
-[]
+[
+  {
+    "parent":"DEV-001",
+    "title":"Timeline Canvas",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"Multi Track Layers",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"Waveform Rendering",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"Video Thumbnails",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"Drag And Drop",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"Playhead Controls",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"Beat Markers",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"Track Management",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"Chroma Key",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"External Media Import",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"Arabic Text Overlays",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-001",
+    "title":"Aspect Ratio Support",
+    "status":"Pending",
+    "progress":0
+  },
+
+  {
+    "parent":"DEV-002",
+    "title":"CosyVoice Installation",
+    "status":"Completed",
+    "progress":100
+  },
+  {
+    "parent":"DEV-002",
+    "title":"Arabic Voice Validation",
+    "status":"Completed",
+    "progress":100
+  },
+  {
+    "parent":"DEV-002",
+    "title":"Voice Cloning Test",
+    "status":"Completed",
+    "progress":100
+  },
+
+  {
+    "parent":"DEV-003",
+    "title":"Qwen Download",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-003",
+    "title":"GPU Optimization",
+    "status":"Pending",
+    "progress":0
+  },
+  {
+    "parent":"DEV-003",
+    "title":"Prompt Engine",
+    "status":"Pending",
+    "progress":0
+  }
+]
