@@ -443,3 +443,21 @@ body{
     width:1800px;
     min-width:1800px;
 }
+
+.developer-task{
+
+background:#eef6ff;
+
+border-right:3px solid #2563eb;
+
+padding:4px 8px;
+
+margin-top:4px;
+
+font-size:11px;
+
+border-radius:4px;
+
+font-weight:600;
+
+}
