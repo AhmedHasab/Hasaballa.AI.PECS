@@ -500,22 +500,27 @@ items.length
 
 function renderSubtasks(masterId){
 
-const items =
-getSubtasks(masterId);
-
-if(
-items.length === 0
-){
+const items = getSubtasks(masterId);
 
 return `
-<div class="subtask">
-No Subtasks
-</div>
-`;
 
-}
+<div class="subtask-wrapper">
 
-return items.map(item=>`
+<button
+class="toggle-subtasks"
+data-task="${masterId}"
+>
+
+▼ ${items.length} Tasks
+
+</button>
+
+<div
+class="subtask-list hidden"
+id="subtasks-${masterId}"
+>
+
+${items.map(item=>`
 
 <div class="subtask">
 
@@ -525,12 +530,8 @@ return items.map(item=>`
 type="checkbox"
 class="subtask-check"
 data-id="${item.id}"
-${subtaskStore[item.id]
-?
-"checked"
-:
-""
-}
+${subtaskStore[item.id] ? "checked" : ""}
+
 >
 
 ${item.title}
@@ -539,7 +540,13 @@ ${item.title}
 
 </div>
 
-`).join("");
+`).join("")}
+
+</div>
+
+</div>
+
+`;
 
 }
 
@@ -618,10 +625,17 @@ body.innerHTML = "";
 
 masterTasks.forEach(master=>{
 
-const progress =
-getSubtaskProgress(
-master.id
+const taskInfo =
+tasks.find(
+t => t.id === master.id
 );
+
+const progress =
+taskInfo?.status === "completed"
+?
+100
+:
+getSubtaskProgress(master.id);
 
 const phase =
 master.phase;
@@ -642,7 +656,13 @@ null;
 
 body.innerHTML += `
 
-<tr>
+<tr class="${
+progress === 100
+?
+'completed'
+:
+''
+}">
 
 <td>
 
@@ -848,6 +868,36 @@ this.dataset.task
 this.value;
 
 saveLocal();
+
+});
+
+});
+
+document
+.querySelectorAll(
+".toggle-subtasks"
+)
+.forEach(btn=>{
+
+btn.addEventListener(
+"click",
+function(){
+
+const taskId =
+this.dataset.task;
+
+const target =
+document.getElementById(
+`subtasks-${taskId}`
+);
+
+if(target){
+
+target.classList.toggle(
+"hidden"
+);
+
+}
 
 });
 
