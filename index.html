@@ -121,17 +121,7 @@ th{
 </tr>
 </thead>
 
-<tbody>
-
-<tr>
-<td>Timeline Editor</td>
-<td>Phase 5</td>
-<td>12-15</td>
-<td></td>
-<td>Pending</td>
-<td>0%</td>
-</tr>
-
+<tbody id="tasksTable">
 </tbody>
 
 </table>
@@ -140,5 +130,53 @@ th{
 
 </div>
 
+<script>
+
+async function loadTasks(){
+
+    const response = await fetch('data/tasks.json');
+    const tasks = await response.json();
+
+    const table = document.getElementById('tasksTable');
+
+    table.innerHTML = '';
+
+    let total = tasks.length;
+    let completed = 0;
+    let inProgress = 0;
+
+    tasks.forEach(task => {
+
+        if(task.status === "Completed"){
+            completed++;
+        }
+
+        if(task.status === "In Progress"){
+            inProgress++;
+        }
+
+        table.innerHTML += `
+        <tr>
+            <td>${task.title}</td>
+            <td>${task.phase}</td>
+            <td>${task.week}</td>
+            <td>${task.developer}</td>
+            <td>${task.status}</td>
+            <td>${task.progress}%</td>
+        </tr>
+        `;
+    });
+
+    document.querySelectorAll('.number')[0].innerText = total;
+    document.querySelectorAll('.number')[1].innerText = completed;
+    document.querySelectorAll('.number')[2].innerText = inProgress;
+    document.querySelectorAll('.number')[3].innerText = total - completed;
+
+}
+
+loadTasks();
+
+</script>
+    
 </body>
 </html>
