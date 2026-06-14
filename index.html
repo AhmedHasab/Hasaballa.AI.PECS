@@ -69,6 +69,47 @@ th{
     color:white;
 }
 
+.completed-row{
+    background:#d6d6d6;
+    box-shadow: inset 0 0 0 3px #ffd700;
+}
+
+.progress-bar{
+    width:120px;
+    height:12px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    background:#22c55e;
+}
+
+.task-check{
+    width:22px;
+    height:22px;
+}
+
+.notes-box{
+    width:180px;
+}
+
+.dev-box{
+    width:120px;
+}
+
+.expand-btn{
+    cursor:pointer;
+    color:#2563eb;
+    font-weight:bold;
+}
+
+.subtask-row{
+    background:#f8fafc;
+}
+    
 </style>
 </head>
 
@@ -112,12 +153,14 @@ th{
 
 <thead>
 <tr>
+<th>✓</th>
 <th>المهمة</th>
 <th>المرحلة</th>
 <th>الأسبوع</th>
 <th>المطور</th>
 <th>الحالة</th>
 <th>نسبة الإنجاز</th>
+<th>ملاحظات</th>
 </tr>
 </thead>
 
@@ -155,16 +198,52 @@ async function loadTasks(){
             inProgress++;
         }
 
-        table.innerHTML += `
-        <tr>
-            <td>${task.title}</td>
-            <td>${task.phase}</td>
-            <td>${task.week}</td>
-            <td>${task.developer}</td>
-            <td>${task.status}</td>
-            <td>${task.progress}%</td>
-        </tr>
-        `;
+    table.innerHTML += `
+<tr class="${task.progress == 100 ? 'completed-row' : ''}">
+    <td>
+        <input type="checkbox"
+        class="task-check"
+        ${task.progress == 100 ? 'checked' : ''}>
+    </td>
+
+    <td>
+        <span class="expand-btn">+</span>
+        ${task.title}
+    </td>
+
+    <td>${task.phase}</td>
+
+    <td>${task.week}</td>
+
+    <td>
+        <input
+        class="dev-box"
+        value="${task.developer}">
+    </td>
+
+    <td>${task.status}</td>
+
+    <td>
+
+        <div class="progress-bar">
+            <div
+            class="progress-fill"
+            style="width:${task.progress}%">
+            </div>
+        </div>
+
+        ${task.progress}%
+
+    </td>
+
+    <td>
+        <input
+        class="notes-box"
+        placeholder="ملاحظات">
+    </td>
+
+</tr>
+`;
     });
 
     document.querySelectorAll('.number')[0].innerText = total;
