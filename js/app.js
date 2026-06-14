@@ -239,8 +239,7 @@ name
 
 function renderDashboard(){
 
-const total =
-tasks.length;
+const total = masterTasks.length;
 
 const completed =
 tasks.filter(
@@ -261,8 +260,7 @@ t.status
 ).length;
 
 const remaining =
-total -
-completed;
+Math.max(0, total - completed);
 
 byId(
 "totalTasks"
@@ -594,20 +592,10 @@ ${dev.name}
 function renderNotes(taskId){
 
 return `
-
 <textarea
 class="notes-box"
 data-task="${taskId}"
-placeholder="Notes..."
->
-
-${notesStore[taskId]
-||
-""
-}
-
-</textarea>
-
+placeholder="Notes...">${notesStore[taskId] || ""}</textarea>
 `;
 
 }
@@ -1352,7 +1340,7 @@ try{
 
 const payload = {
 
-id:1,
+id: 1,
 
 notesStore,
 
@@ -1361,23 +1349,23 @@ developerStore,
 subtaskStore,
 
 updated_at:
-new Date()
-.toISOString()
+new Date().toISOString()
 
 };
 
 const {
-error:saveError
+error: saveError
 }
 =
 await supabase
-
 .from(
 SUPABASE_TABLE
 )
-
 .upsert(
-payload
+payload,
+{
+onConflict: "id"
+}
 );
 
 if(saveError){
@@ -1428,7 +1416,7 @@ SUPABASE_TABLE
 1
 )
 
-.single();
+.maybeSingle();
 
 if(dbError){
 
@@ -1555,26 +1543,18 @@ async function testSupabase(){
 try{
 
 const {
-error:testError
+data,
+error
 }
 =
 await supabase
-
-.from(
-SUPABASE_TABLE
-)
-
+.from(SUPABASE_TABLE)
 .select("id")
-
 .limit(1);
 
-if(testError){
+if(error){
 
-console.warn(
-"Supabase Not Ready"
-);
-
-return false;
+throw error;
 
 }
 
@@ -1588,6 +1568,7 @@ return true;
 catch(err){
 
 console.error(
+"Supabase Connection Error",
 err
 );
 
@@ -1645,16 +1626,37 @@ err
 
 window.hasaballa = {
 
-tasks,
-subtasks,
-reports,
+get tasks(){
+return tasks;
+},
 
-phases,
-milestones,
+get subtasks(){
+return subtasks;
+},
 
-masterTasks,
-mappings,
-developers,
+get reports(){
+return reports;
+},
+
+get phases(){
+return phases;
+},
+
+get milestones(){
+return milestones;
+},
+
+get masterTasks(){
+return masterTasks;
+},
+
+get mappings(){
+return mappings;
+},
+
+get developers(){
+return developers;
+},
 
 refreshAll,
 
