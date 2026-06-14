@@ -4,7 +4,11 @@
     "Arabic Dialect Detection"
   ],
 
-  "Habibi OmniVoice": [
+  "Habibi TTS": [
+    "Reference Voice System",
+    "Arabic Dialect Detection"
+  ],
+    "Omini TTS": [
     "Reference Voice System",
     "Arabic Dialect Detection"
   ],
