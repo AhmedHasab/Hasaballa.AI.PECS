@@ -461,3 +461,20 @@ border-radius:4px;
 font-weight:600;
 
 }
+.developer-task{
+
+background:#eef6ff;
+
+border-right:4px solid #2563eb;
+
+padding:6px 10px;
+
+margin:4px 0;
+
+border-radius:6px;
+
+font-size:12px;
+
+font-weight:700;
+
+}
