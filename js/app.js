@@ -34,6 +34,7 @@ let milestones = [];
 let masterTasks = [];
 let mappings = [];
 let developers = [];
+let developerTasks = {};
 
 let notesStore = {};
 let developerStore = {};
@@ -102,8 +103,8 @@ phases,
 milestones,
 masterTasks,
 mappings,
-developers
-
+developers,
+developerTasks
 ]
 
 =
@@ -140,6 +141,10 @@ loadJson(
 
 loadJson(
 "./data/developers.json"
+),
+
+loadJson(
+"./data/developer_tasks.json"
 )
 
 ]);
@@ -229,6 +234,18 @@ d.name
 ===
 name
 ?.toLowerCase()
+);
+
+}
+
+function getDeveloperTasksForSubtask(subtaskTitle){
+
+return Object.keys(developerTasks)
+.filter(task =>
+
+developerTasks[task]
+.includes(subtaskTitle)
+
 );
 
 }
@@ -535,6 +552,18 @@ ${subtaskStore[item.id] ? "checked" : ""}
 >
 
 ${item.title}
+
+${getDeveloperTasksForSubtask(item.title)
+.map(devTask => `
+
+<div class="developer-task">
+
+⚙ ${devTask}
+
+</div>
+
+`)
+.join("")}
 
 </label>
 
